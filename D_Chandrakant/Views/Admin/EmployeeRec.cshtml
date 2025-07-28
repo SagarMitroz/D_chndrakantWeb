@@ -1,0 +1,224 @@
+﻿@model D_Chandrakant.Models.EmpSalViewModel
+@{
+    Layout = "_Layout";
+    var sr = 1;
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D.Chandrakant Tailors </title>
+    <link rel="shortcut icon" type="image/png" class="bg-black" href="../assets/images/logos/Favicon.png" />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <style>
+        /* CSS to change border color */
+        input[type="date"] {
+            border: 1px solid blue;
+        }
+    </style>
+
+</head>
+
+<body class="bg-light-primary">
+
+    <section class="Emp-management mb-4">
+        <header class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <h2 class="ml-2">Employee Payroll</h2>
+                </div>
+                <div class="col-3 mt-2 mb-2" ">
+                   @*  <button class=" btn border-primary rounded-pill bg-white text-primary  " style="width: 150px;">
+                        Select Date
+                        <img src="../assets/images/images/calendar.png" width="20px" class="">
+                        <input type="date" name="name" value="Select Date" />
+
+                    </button> *@
+                    Select date
+                    <input type="date" id="selectedDate" />
+                </div>
+                <div class="col-6 mt-2 mb-2">
+                    <div style="display: flex; justify-content: flex-end;">
+                        <div class="dropdown">
+                            <div class="mr-2" style="display: flex; justify-content: flex-end;">
+                                <form class="d-flex ">
+                                    Start Date:
+                                    <input type="date" id="selectedDate" /> To
+                                    End Date:
+                                    <input type="date" id="selectedDate" />
+                                    <button class="btn  border-primary rounded-pill bg-primary text-white w-30 "
+                                            type="submit">
+                                        Generate
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+            </div>
+        </header>
+        </div>
+        </div>
+    </section>
+
+    <section class="section-table">
+        <section class="container-fluid">
+            <div class="row">
+                <div class="col d-flex ">
+                    <div class="card w-100">
+                        <div class=" ">
+                            <div class="table-responsive">
+                                <table class="table text-nowrap mb-0 align-middle table-hover">
+                                    <thead class="text-dark fs-4 bg-light">
+                                        <tr>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Sr No</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Name</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Qty</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold text-dark mb-0">Salary</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold text-dark mb-0">Pf NO.</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold text-dark mb-0">Pf Amount</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Account No</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Total Salary</h6>
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="examplet">
+                                        @if (Model.salaries.Count > 0)
+                                        {
+                                            foreach (var item in Model.salaries)
+                                            {
+                                                <tr>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0">@sr</h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-1">@item.Name</h6>
+                                                        <span class="fw-normal"></span>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <p class="mb-0 fw-normal">@item.ComOrder</p>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <span class="badge text-dark fs-4 rounded p-2 fw-semibold">@item.Salary</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0">@item.PfNo</h6>
+                                                    </td>
+                                                    <th class="border-bottom-0">
+                                                        <h6 class="fw-semibold text-dark mb-0">Amt</h6>
+                                                    </th>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0">@item.AccountNo</h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0">@item.ToatalSal</h6>
+                                                    </td>
+                                                </tr>
+                                                sr++;
+                                            }
+
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </section>
+    </section>
+
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Attach change event handler to the date input field
+        $('#selectedDate').change(function () {
+            // Get the value of the input field
+            var selectedDate = $(this).val();
+
+            // Make AJAX request to the controller
+            $.ajax({
+                url: '/Admin/EmployeeRecByDate',
+                type: 'Get',
+                data: { date: selectedDate },
+                success: function (response) {
+                    console.log(response);
+                 
+                    $('#examplet').empty(); // Clear the table body
+                    response.salaries.forEach(function (item, index) {
+                        var row = '<tr>' +
+                            '<td>' + (index + 1) + '</td>' + // Serial Number
+                            '<td>' + item.name + '</td>' + // Name
+                           '<td>' + item.comOrder + '</td>' + // ComOrder
+                           '<td>' + item.salary + '</td>' + // Salary
+                            '<td>' + item.pfNo + '</td>' + // Pf No
+                            '<td>Amt</td>' + // Amount
+                            '<td>' + item.accountNo + '</td>' + // Account No
+                           '<td>' + item.toatalSal + '</td>' + // Total Salary
+                            '</tr>';
+                        $('#examplet').append(row); // Append row to table body
+                    }); 
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.error('Error sending date:', error);
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        // Get the current date
+        var currentDate = new Date();
+
+        // Format the date
+        var dateString = currentDate.toLocaleDateString("en-US", {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Display the formatted date
+        document.getElementById("date").innerHTML = dateString;
+    </script>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,376 @@
+﻿@model D_Chandrakant.Models.cardlistviewModelList
+@{
+    Layout = null;
+    ViewData["Title"] = "Cart";
+    var serial = 1;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/assets/css/bootstrapC.css" rel="stylesheet">
+    <script src="/assets/js/bootstrap.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+    <link rel="shortcut icon" type="image/png" class="bg-black" href="../assets/images/logos/Favicon.png" />
+   
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/Cart.css">
+
+    <link rel="stylesheet" href="/css/Datatable.css" />
+    <script src="~/assets/ProjectCdn/Js/jquery-3.6.0.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.css" rel="stylesheet" />
+   
+
+    <style>
+       @@media screen and (min-device-width: 768px) and (max-device-width: 1024px)
+{
+
+    h5{
+        color: #2B3674;
+        margin-left: -127% !important;
+    }
+}
+    </style>
+</head>
+<body style="background-color:white">
+
+
+
+
+
+
+
+    <div class="container " style="border:1px solid gray; border-radius:20px;background-color:#f4f7fe;">
+
+
+        <div class="row">
+            <nav class="navbar navbar-light " style="border-bottom:2px solid #3196E7;height:74px;background-color:#f4f7fe;">
+                <div class="container-fluid">
+                    <a asp-action="EmpPage" style="text-decoration: none; color:black;font-size: 30px;margin-bottom:1%;">&larr;</a>
+
+                    <span class="navbar-text ms-1">
+                        <h5>Welcome, @ViewBag.Username (@ViewBag.Dept)</h5>
+                    </span>
+                   
+                    <a asp-controller="AuthEmp" asp-action="EmpLogout">
+                        <img src="/assets/images/Images3/logout.png" style="height: 30px;margin-right: 10px;">
+                    </a>
+
+
+                </div>
+            </nav>
+        </div>
+        <!-- First Row for Nav -->
+        <!-- Second Row with Two Columns -->
+        <div class="row w-100">
+            <div class="col-lg-12  mx-auto vh-100" id="col1" >
+                <!-- First Column Content -->
+                <div class="mt-2" style="margin-left: 3%;">
+
+                <table table class="table" id="example" style="text-align:center;">
+                    <thead>
+                        <tr style="background-color: #E1E2FF;">
+                            <th scope="col">Sr.No.</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Memo No.</th>
+                            <th scope="col">Ordered Qty</th>
+                            <th scope="col">Completed Qty</th>
+                           @*  <th scope="col" >Remove</th>
+ *@
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CartList)
+                        {
+                            <tr>
+                                @Html.HiddenFor(m => m.SrNO)
+                                @Html.HiddenFor(m => m.MeasuremntId)
+                                <td scope="col">@serial</td>
+                                <td scope="col">@item.ItemName</td>
+                                <td scope="col">@item.MemoNo</td> 
+                                <td scope="col">@item.OrderedQty</td>
+                                <td scope="col">@item.CompletedQty</td>
+                               @*  <td scope="col">
+                                    <button onclick="openDeleteModal('@item.SrNO','@item.MeasuremntId')" class="btn btn-borderless">
+                                        <img src="/assets/images/Images3/deleteIcon.png" style="height: 20px;">
+                                    </button>
+
+                                </td> *@
+                            </tr>
+                            serial++;
+
+                        }
+
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+         </div>
+    </div>
+
+
+
+
+
+
+    @* ****************************** Delete Alert ******************************** *@
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header mx-auto">
+                    <h5 class="modal-title text-danger  mx-auto " id="deleteModalLabel"><strong>रद्द करा  </strong>    </h5>
+                    @*  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button> *@
+                </div>
+                <div class="modal-body mx-auto">
+                    रेकॉर्ड काढून टाका.
+                </div>
+                <div class="modal-footer mx-auto">
+                    <button type="button" class="btn btn-secondary" onclick="hideopenmodel();">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteEmployee()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* ************************************************************************* *@
+
+    @* ***************************** Modal after delete ******************************************* *@
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="    border-radius: 0.5rem !important;">
+                <div class="modal-header" style="    align-items: center;
+    display: flex;
+    flex-direction:column;">
+                    <h5 class="modal-title" id="exampleModalLabel" style="margin: -11px;"> Barcode Id</h5>
+                    <hr class="new5" id="underline">
+
+                </div>
+                <div class="modal-body">
+                    <center><p id="alertmsg"></p></center>
+                </div>
+
+
+                <center>
+                    <button type="button" class="btn btn-primary" onclick="closepopupmodel();" style="margin-bottom: 11px;
+                     border-radius: 19px;    width: 145px;">
+                        Okay
+                    </button>
+                </center>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<script>
+    function initializeDataTable() {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            lengthMenu: [10, 25, 50, 100],
+            buttons: ['excel', 'print']
+        });
+    }
+
+
+    $(document).ready(function () {
+        initializeDataTable();
+    });
+</script>
+
+
+
+@*
+
+<script>
+    var srNO = 0;
+    var measurementId = 0;
+
+    // Function to open the delete modal
+    function openDeleteModal(SrNO, MeasuremntId) {
+        srNO = SrNO;
+        measurementId = MeasuremntId;
+        $('#deleteModal').modal('show');
+        $('#deleteModal .btn-danger').attr('data-item-id', SrNO + '-' + MeasuremntId);
+    }
+
+    // Function to delete item
+    function deleteEmployee() {
+
+        $('#deleteModal').modal('hide');
+
+        $.ajax({
+            url: '/Emp/DeleteItem', // URL of your backend controller action
+            type: 'POST',
+            data: { SrNO: srNO, MeasuremntId: measurementId }, // Pass both SrNO and MeasuremntId
+            success: function (response) {
+
+                alert(response.error);
+                window.location.reload(); // Refresh the page on successful deletion
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText); // Log any errors to the console
+            }
+        });
+    }
+
+    // Function to hide the modal
+    function hideopenmodel() {
+        $('#deleteModal').modal('hide');
+    }
+</script> *@
+
+<script>
+    var srNO = 0;
+    var measurementId = 0;
+
+    // Function to open the delete modal
+    function openDeleteModal(SrNO, MeasuremntId) {
+        srNO = SrNO;
+        measurementId = MeasuremntId;
+        $('#deleteModal').modal('show');
+        $('#deleteModal .btn-danger').attr('data-item-id', SrNO + '-' + MeasuremntId);
+    }
+
+    // Function to delete item
+    function deleteEmployee() {
+
+        $('#deleteModal').modal('hide');
+
+        $.ajax({
+            url: '/Emp/DeleteItem', // URL of your backend controller action
+            type: 'POST',
+            data: { SrNO: srNO, MeasuremntId: measurementId }, // Pass both SrNO and MeasuremntId
+            success: function (response) {
+                if (response.error == "डिलीट केले.") {
+                    console.log(response.data);
+                    document.getElementById("exampleModalLabel").innerHTML = "";
+                    document.getElementById("alertmsg").innerHTML = "";
+
+
+                    var mainmsg = document.getElementById("exampleModalLabel");
+
+                    mainmsg.innerHTML = "";
+                    mainmsg.innerHTML = "यशस्वीरित्या डिलीट";
+                    mainmsg.style.color = "green";
+
+                    var msgdiv = document.getElementById("alertmsg");
+                    msgdiv.innerHTML = response.error;
+                    msgdiv.style.color = "Black";
+
+                    // Select the div element by its ID
+                    var myDiv = document.getElementById("underline");
+
+                    // Change the border style
+                    myDiv.style.border = "2px solid green";
+
+                    var modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                    modal.show();
+
+                    window.location.reload(); // Refresh the page on successful deletion
+                }
+                else {
+                    document.getElementById("exampleModalLabel").innerHTML = "";
+                    document.getElementById("alertmsg").innerHTML = "";
+
+
+                    var mainmsg = document.getElementById("exampleModalLabel");
+
+                    mainmsg.innerHTML = "ऑर्डर प्रती";
+                    mainmsg.style.color = "red";
+
+                    var msgdiv = document.getElementById("alertmsg");
+                    msgdiv.innerHTML = response.error;
+                    msgdiv.style.color = "Black";
+
+                    // Select the div element by its ID
+                    var myDiv = document.getElementById("underline");
+
+                    // Change the border style
+                    myDiv.style.border = "2px solid red";
+
+                    var modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                    modal.show();
+
+                    //location.reload();
+                }
+
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText); // Log any errors to the console
+            }
+        });
+    }
+
+    // Function to hide the modal
+    function hideopenmodel() {
+        $('#deleteModal').modal('hide');
+    }
+
+    function closepopupmodel() {
+        $('#exampleModal').modal('hide');
+        location.reload();
+    }
+</script>
+
+
+
+<script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/js/sidebarmenu.js"></script>
+<script src="~/assets/js/app.min.js"></script>
+<script src="~/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="~/assets/libs/simplebar/dist/simplebar.js"></script>
+<script src="~/assets/js/dashboard.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+     
+
+
+
+
+
+
+
+
+
+
+
+
+   
+     
+
+
+</body>
+</html>

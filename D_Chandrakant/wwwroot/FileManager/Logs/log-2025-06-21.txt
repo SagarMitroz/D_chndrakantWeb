@@ -1,0 +1,161 @@
+2025-06-21 15:38:31: --------------------------------------------------------------------------------------------
+2025-06-21 15:38:33: gettrasaction  accessed.
+2025-06-21 15:38:36: gettrasaction  20.
+2025-06-21 15:38:40: gettrasaction  20.
+2025-06-21 15:38:40: gettrasaction Date 21/06/2025 3:38:40 pm.
+2025-06-21 15:38:40: gettrasaction  newdateforsave 2025-06-21 15:38:40.
+2025-06-21 15:38:40: gettrasaction startdateTimenew 21/06/2025 3:38:40 pm.
+2025-06-21 15:38:40: gettrasaction startdateTimenew 21/06/2025 3:38:40 pm.
+2025-06-21 15:38:40: gettrasaction newDateString 06/21/2025 15:38:40.
+2025-06-21 15:38:40: gettrasaction newDateString 06/21/2025 15:38:40.
+2025-06-21 15:38:40: gettrasaction givenDate111 21/06/2025 3:38:40 pm.
+2025-06-21 15:38:40: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:38:40: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:38:40: gettrasaction format1 System.String[].
+2025-06-21 15:38:40: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:38:40: gettrasaction newDateString1 06/01/2025 00:00:00.
+2025-06-21 15:38:40: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:38:40: gettrasaction newDateString2 06/30/2025 00:00:00.
+2025-06-21 15:38:40: gettrasaction  20.
+2025-06-21 15:38:40: gettrasaction givenDatestartdate 01/06/2025 12:00:00 am.
+2025-06-21 15:38:40: gettrasaction  givenDateendddate 30/06/2025 12:00:00 am.
+2025-06-21 15:38:40: gettrasaction empname Sunil.
+2025-06-21 15:38:54: --------------------------------------------------------------------------------------------
+2025-06-21 15:38:54: gettrasaction  accessed.
+2025-06-21 15:38:54: gettrasaction  4.
+2025-06-21 15:38:56: gettrasaction  4.
+2025-06-21 15:38:56: gettrasaction Date 21/06/2025 3:38:56 pm.
+2025-06-21 15:38:56: gettrasaction  newdateforsave 2025-06-21 15:38:56.
+2025-06-21 15:38:56: gettrasaction startdateTimenew 21/06/2025 3:38:56 pm.
+2025-06-21 15:38:56: gettrasaction startdateTimenew 21/06/2025 3:38:56 pm.
+2025-06-21 15:38:56: gettrasaction newDateString 06/21/2025 15:38:56.
+2025-06-21 15:38:56: gettrasaction newDateString 06/21/2025 15:38:56.
+2025-06-21 15:38:56: gettrasaction givenDate111 21/06/2025 3:38:56 pm.
+2025-06-21 15:38:56: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:38:56: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:38:56: gettrasaction format1 System.String[].
+2025-06-21 15:38:56: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:38:56: gettrasaction newDateString1 06/01/2025 00:00:00.
+2025-06-21 15:38:56: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:38:56: gettrasaction newDateString2 06/30/2025 00:00:00.
+2025-06-21 15:38:56: gettrasaction  4.
+2025-06-21 15:38:56: gettrasaction givenDatestartdate 01/06/2025 12:00:00 am.
+2025-06-21 15:38:56: gettrasaction  givenDateendddate 30/06/2025 12:00:00 am.
+2025-06-21 15:38:56: gettrasaction empname Jay.
+2025-06-21 15:42:38: --------------------------------------------------------------------------------------------
+2025-06-21 15:42:38: gettrasaction  accessed.
+2025-06-21 15:42:38: gettrasaction  1.
+2025-06-21 15:42:40: gettrasaction  1.
+2025-06-21 15:42:40: gettrasaction Date 21/06/2025 3:42:40 pm.
+2025-06-21 15:42:40: gettrasaction  newdateforsave 2025-06-21 15:42:40.
+2025-06-21 15:42:40: gettrasaction startdateTimenew 21/06/2025 3:42:40 pm.
+2025-06-21 15:42:40: gettrasaction startdateTimenew 21/06/2025 3:42:40 pm.
+2025-06-21 15:42:40: gettrasaction newDateString 06/21/2025 15:42:40.
+2025-06-21 15:42:40: gettrasaction newDateString 06/21/2025 15:42:40.
+2025-06-21 15:42:40: gettrasaction givenDate111 21/06/2025 3:42:40 pm.
+2025-06-21 15:42:40: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:42:40: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:42:40: gettrasaction format1 System.String[].
+2025-06-21 15:42:40: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:42:40: gettrasaction newDateString1 06/01/2025 00:00:00.
+2025-06-21 15:42:40: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:42:40: gettrasaction newDateString2 06/30/2025 00:00:00.
+2025-06-21 15:42:40: gettrasaction  1.
+2025-06-21 15:42:40: gettrasaction givenDatestartdate 01/06/2025 12:00:00 am.
+2025-06-21 15:42:40: gettrasaction  givenDateendddate 30/06/2025 12:00:00 am.
+2025-06-21 15:42:40: gettrasaction empname vijay.
+2025-06-21 15:42:53: --------------------------------------------------------------------------------------------
+2025-06-21 15:42:53: gettrasaction  accessed.
+2025-06-21 15:42:53: gettrasaction  1.
+2025-06-21 15:42:54: gettrasaction format1 System.String[].
+2025-06-21 15:42:54: gettrasaction fromDate 21/06/2025 12:00:00 am.
+2025-06-21 15:42:54: gettrasaction newDateString1 06/21/2025 00:00:00.
+2025-06-21 15:42:54: gettrasaction toDate 22/06/2025 12:00:00 am.
+2025-06-21 15:42:54: gettrasaction newDateString2 06/22/2025 00:00:00.
+2025-06-21 15:42:54: gettrasaction  1.
+2025-06-21 15:42:54: gettrasaction givenDatestartdate 21/06/2025 12:00:00 am.
+2025-06-21 15:42:54: gettrasaction  givenDateendddate 22/06/2025 12:00:00 am.
+2025-06-21 15:42:54: gettrasaction empname vijay.
+2025-06-21 15:50:51: --------------------------------------------------------------------------------------------
+2025-06-21 15:50:51: gettrasaction  accessed.
+2025-06-21 15:50:51: gettrasaction  1.
+2025-06-21 15:50:51: gettrasaction  1.
+2025-06-21 15:50:51: gettrasaction Date 21/06/2025 3:50:51 pm.
+2025-06-21 15:50:51: gettrasaction  newdateforsave 2025-06-21 15:50:51.
+2025-06-21 15:50:51: gettrasaction startdateTimenew 21/06/2025 3:50:51 pm.
+2025-06-21 15:50:51: gettrasaction startdateTimenew 21/06/2025 3:50:51 pm.
+2025-06-21 15:50:51: gettrasaction newDateString 06/21/2025 15:50:51.
+2025-06-21 15:50:51: gettrasaction newDateString 06/21/2025 15:50:51.
+2025-06-21 15:50:51: gettrasaction givenDate111 21/06/2025 3:50:51 pm.
+2025-06-21 15:50:51: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:50:51: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:50:51: gettrasaction format1 System.String[].
+2025-06-21 15:50:51: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:50:51: gettrasaction newDateString1 06/01/2025 00:00:00.
+2025-06-21 15:50:51: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:50:51: gettrasaction newDateString2 06/30/2025 00:00:00.
+2025-06-21 15:50:51: gettrasaction  1.
+2025-06-21 15:50:51: gettrasaction givenDatestartdate 01/06/2025 12:00:00 am.
+2025-06-21 15:50:51: gettrasaction  givenDateendddate 30/06/2025 12:00:00 am.
+2025-06-21 15:50:51: gettrasaction empname vijay.
+2025-06-21 15:51:07: saveedietddata  accessed.
+2025-06-21 15:51:07: saveedietddata  accessed.
+2025-06-21 15:51:07: saveedietddata 21/06/2025 3:51:07 pm .
+2025-06-21 15:51:07: saveedietddata 21/06/2025 3:51:07 pm .
+2025-06-21 15:51:07: saveedietddata D_Chandrakant.DataModels.Emp .
+2025-06-21 15:51:07: saveedietddata False .
+2025-06-21 15:51:07: saveedietddata System.String[] .
+2025-06-21 15:51:07: saveedietddata 21/06/2025 3:51:07 pm .
+2025-06-21 15:51:07: saveedietddata 06/21/2025 15:51:07 .
+2025-06-21 15:51:07: saveedietddata givenDate1 21/06/2025 3:51:07 pm .
+2025-06-21 15:51:07: saveedietddata monthStartDate 01/06/2025 12:00:00 am .
+2025-06-21 15:51:07: saveedietddata monthEndDate 30/06/2025 12:00:00 am .
+2025-06-21 15:51:07: saveedietddata privmonthStartDate 01/05/2025 12:00:00 am .
+2025-06-21 15:51:07: saveedietddata privmonthEndDate 31/05/2025 12:00:00 am .
+2025-06-21 15:51:07: saveedietddata startdateTime 01/06/2025 12:00:00 am .
+2025-06-21 15:51:07: saveedietddata enddateTime 30/06/2025 12:00:00 am .
+2025-06-21 15:51:07: saveedietddata record System.Collections.Generic.List`1[D_Chandrakant.DataModels.Empwork] .
+2025-06-21 15:51:10: --------------------------------------------------------------------------------------------
+2025-06-21 15:51:10: gettrasaction  accessed.
+2025-06-21 15:51:10: gettrasaction  1.
+2025-06-21 15:51:10: gettrasaction  1.
+2025-06-21 15:51:10: gettrasaction Date 21/06/2025 3:51:10 pm.
+2025-06-21 15:51:10: gettrasaction  newdateforsave 2025-06-21 15:51:10.
+2025-06-21 15:51:10: gettrasaction startdateTimenew 21/06/2025 3:51:10 pm.
+2025-06-21 15:51:10: gettrasaction startdateTimenew 21/06/2025 3:51:10 pm.
+2025-06-21 15:51:10: gettrasaction newDateString 06/21/2025 15:51:10.
+2025-06-21 15:51:10: gettrasaction newDateString 06/21/2025 15:51:10.
+2025-06-21 15:51:10: gettrasaction givenDate111 21/06/2025 3:51:10 pm.
+2025-06-21 15:51:10: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:51:10: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:51:10: gettrasaction format1 System.String[].
+2025-06-21 15:51:10: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:51:10: gettrasaction newDateString1 06/01/2025 00:00:00.
+2025-06-21 15:51:10: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:51:10: gettrasaction newDateString2 06/30/2025 00:00:00.
+2025-06-21 15:51:10: gettrasaction  1.
+2025-06-21 15:51:10: gettrasaction givenDatestartdate 01/06/2025 12:00:00 am.
+2025-06-21 15:51:10: gettrasaction  givenDateendddate 30/06/2025 12:00:00 am.
+2025-06-21 15:51:10: gettrasaction empname vijay.
+2025-06-21 15:52:25: --------------------------------------------------------------------------------------------
+2025-06-21 15:52:25: gettrasaction  accessed.
+2025-06-21 15:52:25: gettrasaction  1.
+2025-06-21 15:52:25: gettrasaction  1.
+2025-06-21 15:52:25: gettrasaction Date 21/06/2025 3:52:25 pm.
+2025-06-21 15:52:25: gettrasaction  newdateforsave 2025-06-21 15:52:25.
+2025-06-21 15:52:25: gettrasaction startdateTimenew 21/06/2025 3:52:25 pm.
+2025-06-21 15:52:25: gettrasaction startdateTimenew 21/06/2025 3:52:25 pm.
+2025-06-21 15:52:25: gettrasaction newDateString 06/21/2025 15:52:25.
+2025-06-21 15:52:25: gettrasaction newDateString 06/21/2025 15:52:25.
+2025-06-21 15:52:25: gettrasaction givenDate111 21/06/2025 3:52:25 pm.
+2025-06-21 15:52:25: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:52:25: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:52:25: gettrasaction format1 System.String[].
+2025-06-21 15:52:25: gettrasaction fromDate 01/06/2025 12:00:00 am.
+2025-06-21 15:52:25: gettrasaction newDateString1 06/01/2025 00:00:00.
+2025-06-21 15:52:25: gettrasaction toDate 30/06/2025 12:00:00 am.
+2025-06-21 15:52:25: gettrasaction newDateString2 06/30/2025 00:00:00.
+2025-06-21 15:52:25: gettrasaction  1.
+2025-06-21 15:52:25: gettrasaction givenDatestartdate 01/06/2025 12:00:00 am.
+2025-06-21 15:52:25: gettrasaction  givenDateendddate 30/06/2025 12:00:00 am.
+2025-06-21 15:52:25: gettrasaction empname vijay.

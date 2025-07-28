@@ -1,0 +1,433 @@
+﻿@model List<DeliveryStatusViewModel>
+@{
+    //Layout = null;
+        Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeliveryStatus</title>
+ <link rel="shortcut icon" type="image/png" class="bg-black" href="../assets/images/logos/Favicon.png" />
+<link rel="stylesheet" href="../assets/css/styles.min.css" />
+<link rel="stylesheet" href="../assets/css/bootstrap.css" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+@* <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    
+
+</head>
+<body>
+
+  
+    <section class="Emp-management mb-4">
+        <header class="container-fluid">
+            <div class="col-6">
+                <h2 class="ml-2">Delivery Status Report</h2>
+                <br />
+            </div>
+
+             <div class="col-12" style="display:flex;">
+              
+                                 <div class="col-2" id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: ;">
+                                        <i class="bi bi-calendar3"></i>&nbsp;
+                                        <span id="dggf"></span> <i class="fa fa-caret-down"></i>
+                                  </div>
+                      
+                                  <div class="col-2">
+                      
+                                            </select> <select name="Itemfk" id="Itemfk" class="form-control" >
+                                                <option selected disabled>Product</option>
+                                            </select>
+                                  </div>
+                               
+                                    <div class="col-2">
+                      
+                                            <button id="searchButton" type="submit" class="btn btn-primary" style="margin-top: -1px;">Search</button>
+                                    </div>
+      
+
+           
+
+                
+                   @* <form asp-action="DeliveryStatus" asp-controller="Admin">
+                    <div class="row" id="">
+                        <div class="col-3">
+
+                            <div class="form-group">
+                                <label for="startDate" style="margin-left: 27px;">Start Date:</label>
+                                <input type="date" id="startDate" name="startDate">
+                            </div>
+
+                        </div>
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="endDate" style="margin-left: -50px;">End Date:</label>
+                                <input type="date" id="endDate" name="endDate">
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="searchToday" style="margin-left: -135px;">Search Today:</label>
+                                <input type="checkbox" id="searchToday" name="searchToday">
+                            </div>
+                        </div>
+                         <div class="col-2">
+                           
+                            <select name="Itemfk" id="Itemfk" class="form-control" style="margin-left: -221px;">
+                                <option selected disabled>Product</option>
+                            </select>
+                                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-primary" style="margin-top: -1px;margin-left: -188px">Submit</button>
+
+                        </div>
+
+                    </div>
+
+                </form> *@
+
+
+
+
+            
+            </div>
+        </header>
+        </div>
+        </div>
+    </section>
+
+
+    <div class="container-fluid" >
+      
+            <div class="d-flex justify-content-center ">
+               
+                    <div class="col-lg-10">
+                    <canvas id="myChart" ></canvas>
+
+                   
+                </div>
+            </div>
+        
+ </div>
+
+
+
+  <script>
+    $(document).ready(function() {
+    
+        var start = moment().subtract(29, 'days');
+        var end = moment();
+       
+        function cb(start, end) {
+            $('#reportrange span').html(start.format(' DD/MM/YYYY') + ' - ' + end.format(' DD/MM/YYYY'));
+        }
+    
+        $('#reportrange').daterangepicker({
+          
+            startDate: start,
+            endDate: end,
+            ranges: {
+               'Today': [moment(), moment()],
+               'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+               'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+               'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+               'This Month': [moment().startOf('month'), moment().endOf('month')],
+               'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        }, cb);
+    
+        cb(start, end);
+    
+    });
+    </script>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            let chart; // Declare the chart variable in a scope accessible to the entire script
+
+            $("#searchButton").click(function () {
+                // Retrieve selected date range
+                var dateRange = $("#dggf").text().trim();
+
+                // Split the date range into start and end dates
+                var dates = dateRange.split("-");
+                var startDate = dates[0].trim();
+                var endDate = dates[1].trim();
+               
+
+                // Gather other data from form elements
+                var product = $("#Itemfk").val();
+
+                // AJAX call
+                $.ajax({ 
+                    type: "POST",
+                    url: '/Admin/DeliveryStatusJ', // Replace '@Url.Action("DeliveryStatusJ", "Admin")' with a hardcoded URL or pass it from the server
+                    data: {
+                        startDate: startDate,
+                        endDate: endDate,
+                        itemfk: product,
+                    },
+                    success: function (response) {
+                        const xValues = [];
+                        const yValues = [];
+
+                        response.forEach(function (item) {
+                            xValues.push(item.itemName);
+                            yValues.push(item.status);
+                        });
+
+                        const barColors = [
+                            "red", "green", "blue", "orange", "brown", "purple", "pink", "teal", "cyan", "magenta",
+                            "lime", "yellow", "indigo", "violet", "navy", "maroon", "olive", "steelblue", "peru",
+                            "darkorange", "crimson", "darkslategray", "darkorchid", "darkcyan", "darkgoldenrod",
+                            "dodgerblue", "firebrick", "forestgreen", "gold", "hotpink", "indianred", "khaki",
+                            "lawngreen", "lightcoral", "lightseagreen", "lightsalmon", "mediumaquamarine",
+                            "mediumorchid", "mediumvioletred"
+                            // Add more colors as needed
+                        ];
+
+                        if (chart) {
+                            chart.destroy();
+                        }
+
+                        const ctx = document.getElementById('myChart').getContext('2d');
+                        Chart.register(ChartDataLabels); // Ensure ChartDataLabels is included in your HTML
+                        chart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: xValues,
+                                datasets: [
+                                    {
+                                        data: yValues,
+                                        backgroundColor: barColors,
+                                        borderColor: 'black',
+                                        borderWidth: 1
+                                    }
+                                ]
+                            },
+                            options: {
+                                plugins: {
+                                    title: {
+                                        display: true,
+                                        // text: 'Release Year of Web Frameworks',
+                                        color: 'blue',
+                                        font: {
+                                            weight: 'bold',
+                                            size: 20
+                                        }
+                                    },
+                                    datalabels: {
+                                        anchor: 'end',
+                                        align: 'end',
+                                        color: 'blue',
+                                        font: {
+                                            weight: 'bold',
+                                        },
+                                        formatter: function (value, context) {
+                                            return value;
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        stacked: false
+                                    },
+                                    y: {
+                                        stacked: false
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
+
+
+
+
+
+   @*  <script>
+        const ctx = document.getElementById('myChart');
+        Chart.register(ChartDataLabels);
+
+         const xValues = [];
+         const yValues = [];
+
+            @foreach (var item in Model)
+                {
+                    <text>xValues.push('@Html.Raw(Json.Serialize(item.ItemName))');</text>
+                    <text>yValues.push('@item.Status');</text>
+                }
+
+     const barColors = [
+                      "red", "green", "blue", "orange", "brown", "purple", "pink", "teal", "cyan", "magenta",
+                      "lime", "yellow", "indigo", "violet", "navy", "maroon", "olive", "steelblue", "peru",
+                      "darkorange", "crimson", "darkslategray", "darkorchid", "darkcyan", "darkgoldenrod",
+                      "dodgerblue", "firebrick", "forestgreen", "gold", "hotpink", "indianred", "khaki",
+                      "lawngreen", "lightcoral", "lightseagreen", "lightsalmon", "mediumaquamarine",
+                      "mediumorchid", "mediumvioletred"
+                      // Add more colors as needed
+                ];
+
+   
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: xValues,
+                datasets: [
+                    {
+                        data: yValues,
+                        backgroundColor: barColors,
+                        borderColor: 'black',
+                    borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        // text: 'Release Year of Web Frameworks',
+                        color: 'blue',
+                        font: {
+                            weight: 'bold',
+                            size: 20
+                        }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'end',
+                        color: 'blue',
+                        font: {
+                            weight: 'bold',
+                        },
+                        formatter: function (value, context) {
+                            return value;
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: false
+                    },
+                    y: {
+                        stacked: false
+                    }
+                }
+            }
+        });
+    </script>
+ *@
+
+
+      <script>
+         $(document).ready(function () {
+            $('#Itemfk').on('mousedown', function () {
+                $.ajax({
+                    url: '@Url.Action("ItemListG", "Admin")',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var dropdown = $('#Itemfk');
+                        dropdown.empty();
+                        dropdown.append('<option selected disabled>Select Product</option>');
+                        $.each(data, function () {
+                            // dropdown.append($('<option></option>').attr('value', this.id).text(this.name));
+                            dropdown.append($('<option></option>').attr('value', this.id).text(this.name + ' (' + this.id + ')'));
+
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+        @*     <script>
+
+                const xValues = [];
+                const yValues = [];
+
+                @foreach (var item in Model)
+                {
+                    <text>xValues.push('@Html.Raw(Json.Serialize(item.ItemName))');</text>
+                    <text>yValues.push('@item.Status');</text>
+                }
+
+                //const barColors = ["red", "green", "blue", "orange", "brown"]; 
+
+                const barColors = [
+                      "red", "green", "blue", "orange", "brown", "purple", "pink", "teal", "cyan", "magenta",
+                      "lime", "yellow", "indigo", "violet", "navy", "maroon", "olive", "steelblue", "peru",
+                      "darkorange", "crimson", "darkslategray", "darkorchid", "darkcyan", "darkgoldenrod",
+                      "dodgerblue", "firebrick", "forestgreen", "gold", "hotpink", "indianred", "khaki",
+                      "lawngreen", "lightcoral", "lightseagreen", "lightsalmon", "mediumaquamarine",
+                      "mediumorchid", "mediumvioletred"
+                      // Add more colors as needed
+                ];
+
+                new Chart("myChart", {
+                    type: "bar",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                            backgroundColor: barColors,
+                            data: yValues
+                        }]
+                    },
+                    options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: "Delivery Status"
+                        }
+                    }
+                });
+            </script>
+ *@
+
+    @*<table>
+    <thead>
+    <tr>
+    <th>Item Name</th>
+    <th>Delivery Done</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+    <tr>
+    <td>@item.ItemName</td>
+    <td>@item.Status</td>
+    </tr>
+    }
+    </tbody>
+    </table>*@
+      <script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

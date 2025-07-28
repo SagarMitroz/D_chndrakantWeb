@@ -1,0 +1,23 @@
+2025-07-16 19:27:09: saveedietddata  accessed.
+2025-07-16 19:27:09: saveedietddata  accessed.
+2025-07-16 19:27:09: saveedietddata 16/07/2025 7:27:09 pm .
+2025-07-16 19:27:09: saveedietddata 16/07/2025 7:27:09 pm .
+2025-07-16 19:27:09: saveedietddata D_Chandrakant.DataModels.Emp .
+2025-07-16 19:27:09: saveedietddata False .
+2025-07-16 19:27:09: saveedietddata System.String[] .
+2025-07-16 19:27:09: saveedietddata 16/07/2025 7:27:09 pm .
+2025-07-16 19:27:09: saveedietddata 07/16/2025 19:27:09 .
+2025-07-16 19:27:09: saveedietddata givenDate1 16/07/2025 7:27:09 pm .
+2025-07-16 19:27:09: saveedietddata monthStartDate 01/07/2025 12:00:00 am .
+2025-07-16 19:27:09: saveedietddata monthEndDate 31/07/2025 12:00:00 am .
+2025-07-16 19:27:09: saveedietddata privmonthStartDate 01/06/2025 12:00:00 am .
+2025-07-16 19:27:09: saveedietddata privmonthEndDate 30/06/2025 12:00:00 am .
+2025-07-16 19:27:09: saveedietddata startdateTime 01/07/2025 12:00:00 am .
+2025-07-16 19:27:09: saveedietddata enddateTime 31/07/2025 12:00:00 am .
+2025-07-16 19:27:09: saveedietddata record System.Collections.Generic.List`1[D_Chandrakant.DataModels.Empwork] .
+2025-07-16 19:27:15: --------------------------------------------------------------------------------------------
+2025-07-16 19:27:15: gettrasaction accessed.
+2025-07-16 19:27:15: gettrasaction employeid: 51
+2025-07-16 19:27:15: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-16 19:27:15: Employee Name: अशोक दासर
+2025-07-16 19:27:16: gettrasaction (JSON) accessed.

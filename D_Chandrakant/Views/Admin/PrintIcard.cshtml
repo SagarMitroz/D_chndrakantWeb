@@ -1,0 +1,134 @@
+﻿@model D_Chandrakant.Models.EmpModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D.Chandrakant Tailors </title>
+    <link rel="shortcut icon" type="image/png" class="bg-black" href="../assets/images/logos/Favicon.png" />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/Datatable.css" />
+    <link rel="stylesheet" href="path/to/styles.css">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <style>
+        * 
+        {
+            margin-top:1%;
+        }
+        body{
+            overflow:hidden;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="col-12 " style="height:100vh;">
+        <div class="">
+           
+                <div class=" text-center">
+                    <div class="card bg-light rounded-4 mt-5 mx-auto" style="display:flex;width:30%;height:500px">
+                    <h4 class="text-white">
+                        <img src="/assets/images/Images3/Logo_Blue.png" style="width: 184px;height: 130px;align-content:center;" alt="Alternate Text" />
+                    </h4>
+
+                        <div id="ABC">
+                        <img id="profileImage" class="img mx-auto" src="/ProfileImg/@Model.ProfileImg" style="margin-top: 1px;width: 148px;height: 159px;border-radius: 3px;border: solid 1px black" class="mt-3">
+
+                            <table class=" mx-auto mt-2" style="text-align: left;margin-left: 29px;">
+                                <tr>
+                                    <th>Name : </th>
+                                    <td>@Model.Name</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Department : </th>
+                                    <td >@Model.DeptFk</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Address : </th>
+                                    <td >@Model.Address</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Mobile : </th>
+                                    <td>@Model.MobileNo</td>
+
+                                </tr>
+                            </table>
+
+
+                            <img class="mt-2" id="barcodeImage" src="/BarcodeFile/barcode.png" class="mx-auto" style="height:30px; width:130px" alt="">
+                        </div>
+                    </div>
+                </div>
+          
+        </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+
+    <script>
+
+        // $(document).ready(function () {
+        //     $('#employeeTableBody').on('click', 'tr', function () {
+        //         var id = $(this).find('td:eq(2)').text(); // Assuming the ID is in the third column
+        //         showDetails(id);
+        //     });
+
+
+        //     function showDetails(id) {
+        //         $.ajax({
+        //             url: '/Admin/SerchProfileN',
+        //             type: "GET",
+        //             data: { id: id },
+        //             dataType: "json",
+
+        //             success: function (result) {
+        //                 console.log(result);
+
+        //                 $('#profileName').html(result.name);
+        //                 $('#profileDept').html(result.deptFk);
+        //                 $('#profileAddress').html(result.address);
+        //                 $('#profileImage').attr('src', '/ProfileImg/' + result.profileImg);
+        //                 $('#profileMobile').html(result.mobileNo);
+        //                 var timestamp = new Date().getTime();
+
+        //                 // Reload the image by appending timestamp as a query parameter
+        //                 $('#barcodeImage').attr('src', result.barcodeUrl + '?timestamp=' + timestamp);
+
+        //             },
+        //             error: function (xhr, status, error) {
+        //                 console.error(xhr.responseText);
+        //                 alert("An error occurred while fetching data. Please try again later.");
+        //             }
+        //         });
+        //     }
+        // });
+    </script>
+
+
+</body>
+</html>

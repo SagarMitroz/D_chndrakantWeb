@@ -1,0 +1,29 @@
+2024-06-06 18:35:37: saveedietddata  accessed.
+2024-06-06 18:35:42: saveedietddata 6/6/2024 6:35:42 pm .
+2024-06-06 18:35:42: saveedietddata 6/6/2024 6:35:42 pm .
+2024-06-06 18:35:42: saveedietddata D_Chandrakant.DataModels.Emp .
+2024-06-06 18:35:42: saveedietddata False .
+2024-06-06 18:35:42: saveedietddata System.String[] .
+2024-06-06 18:35:42: saveedietddata 6/6/2024 6:35:42 pm .
+2024-06-06 18:35:42: saveedietddata 06/06/2024 18:35:42 .
+2024-06-06 18:35:42: saveedietddata givenDate1 6/6/2024 6:35:42 pm .
+2024-06-06 18:35:42: saveedietddata monthStartDate 1/6/2024 12:00:00 am .
+2024-06-06 18:35:42: saveedietddata monthEndDate 30/6/2024 12:00:00 am .
+2024-06-06 18:35:42: saveedietddata privmonthStartDate 1/5/2024 12:00:00 am .
+2024-06-06 18:35:42: saveedietddata privmonthEndDate 31/5/2024 12:00:00 am .
+2024-06-06 18:35:42: saveedietddata startdateTime 1/6/2024 12:00:00 am .
+2024-06-06 18:35:42: saveedietddata enddateTime 30/6/2024 12:00:00 am .
+2024-06-06 18:35:42: saveedietddata record System.Collections.Generic.List`1[D_Chandrakant.DataModels.Empwork] .
+2024-06-06 19:38:35: --------------------------------------------------------------------------------------------
+2024-06-06 19:38:36: gettrasaction  accessed.
+2024-06-06 19:38:39: gettrasaction  1.
+2024-06-06 19:39:16: gettrasaction  1.
+2024-06-06 19:39:56: gettrasaction  1.
+2024-06-06 19:39:56: gettrasaction  1.
+2024-06-06 19:39:56: gettrasaction  1.
+2024-06-06 19:39:57: gettrasaction  1.
+2024-06-06 19:39:59: gettrasaction  1.
+2024-06-06 19:40:00: gettrasaction  1.
+2024-06-06 19:40:07: gettrasaction  1.
+2024-06-06 19:40:07: gettrasaction  1.
+2024-06-06 19:40:08: gettrasaction  1.

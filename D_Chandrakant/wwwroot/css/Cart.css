@@ -1,0 +1,83 @@
+﻿h5 {
+    color: #2B3674;
+    margin-left: -173%
+}
+
+
+
+tbody, td, tfoot, th, thead, tr {
+    border-color: #e9e9e9 !important;
+}
+
+table.dataTable.no-footer {
+    border-color: #e9e9e9 !important;
+}
+
+.headerrow {
+    background: #dae1e5;
+    height: 60px;
+    vertical-align: middle;
+}
+
+.center-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0.5em;
+    border-radius: 20px;
+    height: 35px;
+    outline-offset: 0px;
+    padding: 10px;
+    border: 2px solid #bdbdbd;
+}
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #333 !important;
+    border-radius: 20px;
+    border: 0px solid #979797;
+    background: #ffe1e1;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 15px 10px;
+}
+
+.menu-submenu {
+    transition: max-height 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+    .menu-submenu.show {
+        max-height: 500px; /* Adjust as needed */
+    }
+
+.pagination {
+    justify-content: center;
+}
+
+.profile-link {
+    cursor: pointer;
+}
+
+.container {
+    height: calc(100vh - 6rem);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    overflow-y: hidden;
+}
+
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px)
+{
+
+    h5{
+        color: #2B3674;
+        margin-left: -127% !important;
+    }
+}

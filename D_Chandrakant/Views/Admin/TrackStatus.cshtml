@@ -1,0 +1,1007 @@
+﻿@model D_Chandrakant.Models.StatusViewModel
+@{
+    Layout = "_layout";
+}
+
+     
+
+<!doctype html>
+<html lang="en">
+   
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D.Chandrakant Tailors </title>
+    <link rel="shortcut icon" type="image/png" class="bg-black" href="../assets/images/logos/Favicon.png" />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Adjust the background of the modal overlay */
+        .modal-backdrop {
+            background-color: transparent !important;
+        }
+
+        /* Adjust the background of the modal content */
+        .modal-content {
+           /*  background-color: transparent !important; */
+            border: none; /* Optional: remove border */
+            box-shadow: 10px 10px 10px rgba(74, 72, 72, 0.5);
+        }
+
+      
+    </style>
+
+</head>
+
+<body class="bg-light-primary"> 
+   
+
+    <section class="">
+        <div class=" container-fluid ">
+            <div class=" w-100 h-25">
+                <div class="card-body ">
+                    <div class="d-lg-flex">
+                        <div class=" col-6">
+                            <h2> Track Status By Memo No</h2>
+                        </div>
+
+
+
+                        <div class=" col-sm-12 col-md-12 col-lg-6">
+                            <div class="container-fluid">
+                                <div class="mr-2 w-75">
+                                    <div class="d-flex ">
+                                        <input type="text" id="textSearch" class="form-control mr-2 border-white text-dark rounded-pill text-white" aria-label="Search" autocomplete="off" />
+                                        <select id="gradeSelect">
+                                            <option value="A">Memo Series</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="F">F</option>
+                                        </select>
+
+                                        <button onclick="btnSearch()" class="btn ms-2 border-primary rounded-pill bg-primary text-white w-30" type="submit">Search</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-detail ">
+        <div class=" container-fluid ">
+            <div class="card w-100 border-4">
+                <div class="card-body p-4 rounded-4" style="height: 350px; ">
+                    <div>
+                        <div class="row">
+                            <h5>Order Details</h5>
+                        </div>
+                        <div>
+                            <div class="shadow-sm rounded-4">
+                                <div class="d-lg-flex justify-content-between">
+                                    <!-- Memo number -->
+                                    <div class="col-2">
+                                        <div class="">
+                                            <p class="fs-4 mt-2 mb-0">Memo Number</p>
+                                            <p class="fs-4 font-weight-bold" id="memoNumber"> </p>
+                                        </div>
+                                    </div>
+                                    <!-- Memo number -->
+
+                                    <div class="col-2">
+                                        <div class="">
+                                            <p class="fs-4 mt-2 mb-0">Customer Name</p>
+                                            <p class="fs-4 font-weight-bold" id="customerName"> </p>
+                                        </div>
+                                    </div>
+                                    <!-- contact number -->
+
+                                    <div class="col-2">
+                                        <div class="">
+                                            <p class="fs-4 mt-2 mb-0">Contact</p>
+                                            <p class="fs-4 font-weight-bold" id="contactNumber"> </p>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- address number -->
+
+                                    <div class="col-2">
+                                        <div class="">
+                                            <p class="fs-4 mt-2 mb-0">Address</p>
+                                            <p class="fs-4 font-weight-bold" id="address"> </p>
+                                        </div>
+                                    </div>
+                                    <!-- order Date -->
+
+                                    <div class="col-2">
+                                        <div class="">
+                                            <p class="fs-4 mt-2 mb-0">Order Date</p>
+                                            <p class="fs-4 font-weight-bold" id="orderDate"> </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        @* ******************************************************************************** *@
+
+                        <div class="row">
+                            <div class="row ">
+                                <h5 class="ml-2">Order Status </h5>
+                            </div>
+                            <div class="d-lg-flex">
+                               
+
+                           
+
+                            <button class="btn col-md-2 ml-2 rounded-4 shadow border-white modal-trigger">
+                                <div class="row g-0">
+                                    <div class="col-md-3 rounded colo">
+                                        <img src="../assets/images/images/cutting 01.png" class="mt-3" width="60" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h6 class="fw-semibold fs-5 font-weight-bold mb-28 ml-3 text-dark w-85"> Cutting</h6>
+                                            <span class="ml-2" id="WorkStatus"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button class="btn col-md-2 ml-2 rounded-4 shadow border-white modal-trigger1">
+                                    <div class="row g-0 ">
+                                        <div class="col-md-3 rounded colo">
+                                            <img src="../assets/images/images/stretiching (2).png" class="mt-3" width="60" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h6 class="fw-semibold fs-5 font-weight-bold mb-28 ml-2 text-dark w-85"> Stitching</h6>
+                                                <span class="ml-2" id="WorkStatusA">  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+
+
+
+
+                            <button class="btn col-md-2 ml-2 rounded-4 shadow border-white modal-trigger2">
+                                    <div class="row g-0 ">
+                                        <div class="col-md-3 rounded ">
+                                            <img src="../assets/images/images/ironing.png" class="mt-3" width="60" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h6 class="fw-semibold fs-5 font-weight-bold mb-28 ml-3 text-dark w-85"> Ironing</h6>
+                                                <span class="ml-2" id="WorkStatusB"> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+
+
+
+                           @*  <button class="btn col-md-2 ml-2 rounded-4 shadow border-white modal-trigger3">
+                                    <div class="row ">
+                                        <div class="col-md-3 rounded ">
+                                            <img src="../assets/images/images/delivery.png" class="mt-3" width="60" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h6 class="fw-semibold fs-5  font-weight-bold  ml-3 text-dark w-85"> Delivery</h6>
+                                            <span class="ml-2" id="WorkStatusC"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button> *@
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    @* ******************* *@
+                    <div class="row">
+                        <div class="d-lg-flex">
+
+
+                            <div class="card col-md-2 ml-2 rounded-4 shadow" >
+                               
+                                <div class="card-body">
+                                    <table class="table table-sm" style="text-align: center;" id="statusTable">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Item</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                  
+
+                                </div>
+                            </div>
+
+
+                            <div class="card col-md-2 ml-2 rounded-4 shadow">
+                               
+                                <div class="card-body">
+                                    <table class="table table-sm" style="text-align: center;" id="statusTableA">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Item</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Table rows will be dynamically added here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card col-md-2 ml-2 rounded-4 shadow">
+                               
+                                <div class="card-body">
+                                    <table class="table table-sm" style="text-align: center;" id="statusTableB">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Item</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Table rows will be dynamically added here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                         @*    <div class="card col-md-2 ml-2 rounded-4 shadow">
+                                
+                                <div class="card-body">
+                                    <table class="table table-sm" style="text-align: center;" id="statusTableC">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Item</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Table rows will be dynamically added here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> *@
+                    </div>
+                  </div>
+                    
+
+
+
+                    @* ***************** *@
+
+
+    </section> 
+    
+
+    <!----------Popup for cutting ------------------------>
+
+   @*  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: block;
+    position: absolute;
+    margin-left: 4%;
+    height: 300px;z-index: 10808;
+    margin-top: 28.5%; width:230px;" aria-hidden="true">
+        <div class="modal-dialog m-0  mt-9"  role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cutting</h1>
+                   
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm" style="text-align: center;" id="statusTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ *@
+
+
+    <!--************************************-->
+    <!----------Popup for Stritching ------------------------>
+
+   @*  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" style="    display: block;
+    position: absolute;
+    margin-left: 20%;
+    height: 300px;z-index: 10808;
+    margin-top: 26%;width:300px;" aria-hidden="true">
+        <div class="modal-dialog m-0 mx-6"  role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Stitching</h1>
+                   
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm" style="text-align: center;" id="statusTableA">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div> *@
+
+
+
+    <!--************************************-->
+    <!----------Popup for Ironing ------------------------>
+
+   @*  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" style="    display: block;
+    position: absolute;
+    margin-left: 36%;z-index: 10808;
+    height: 300px;
+    margin-top: 26%;width:300px;" aria-hidden="true">
+        <div class="modal-dialog m-0  mt-9" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ironing</h1>
+                  
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm" style="text-align: center;" id="statusTableB">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                       
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ *@
+
+
+    <!--************************************-->
+    <!----------Popup for Delivey ------------------------>
+@* 
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" style="    display: block;
+    position: absolute;
+    margin-left: 52%;
+    height: 300px;z-index: 10808;
+    margin-top: 26%;width:300px;" aria-hidden="true">
+        <div class="modal-dialog m-0  " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delivery</h1>
+                  
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm" style="text-align: center;" id="statusTableC">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                         
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div> *@
+
+
+
+    <!--************************************-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- jQuery library (required for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript bundle (includes Popper) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+@* <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const button = document.querySelector('.modal-trigger');
+        const modal = document.getElementById('exampleModal');
+
+        button.addEventListener('mouseenter', function () {
+            modal.classList.add('show');
+            modal.style.display = 'block';
+        });
+
+        button.addEventListener('mouseleave', function () {
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+        });
+    });
+</script>  *@
+
+@* <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const button = document.querySelector('.modal-trigger1');
+        const modal = document.getElementById('exampleModal1');
+
+        button.addEventListener('mouseenter', function () {
+            modal.classList.add('show');
+            modal.style.display = 'block';
+        });
+
+        button.addEventListener('mouseleave', function () {
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const button = document.querySelector('.modal-trigger2');
+        const modal = document.getElementById('exampleModal2');
+
+        button.addEventListener('mouseenter', function () {
+            modal.classList.add('show');
+            modal.style.display = 'block';
+        });
+
+        button.addEventListener('mouseleave', function () {
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const button = document.querySelector('.modal-trigger3');
+        const modal = document.getElementById('exampleModal3');
+
+        button.addEventListener('mouseenter', function () {
+            modal.classList.add('show');
+            modal.style.display = 'block';
+        });
+
+        button.addEventListener('mouseleave', function () {
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+        });
+    });
+</script> *@
+@*     <script>
+        function showModal() {
+            $('#exampleModal').modal('show');
+        }
+    function hideModal() {
+        $('#exampleModal').modal('hide');
+    }
+
+
+    </script>
+
+    @* <script>
+        function showModalA() {
+            $('#exampleModal1').modal('show');
+        }
+
+
+    </script>
+
+    <script>
+        function showModalB() {
+            $('#exampleModal2').modal('show');
+        }
+
+
+    </script>
+
+    <script>
+        function showModalC() {
+            $('#exampleModal3').modal('show');
+        }
+
+
+    </script> *@
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@* 
+    <script>
+        function btnSearch() {
+            $.ajax({
+                url: '@Url.Action("Statusinfo", "Admin")',
+                type: "GET",
+                data: {
+                    memo: $('#textSearch').val()
+                },
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    $('#memoNumber').text(result.memoNo);
+                    $('#customerName').text(result.name);
+                    $('#contactNumber').text(result.contact);
+                    $('#address').text(result.address);
+                    $('#orderDate').text(result.orderDate);
+
+                   
+                    $('#item').text(result.itemName); // Update item name
+                    $('#status').text(result.compQty + '/' + result.orderedQty);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    // Optionally, display an error message to the user
+                    alert("An error occurred while fetching data. Please try again later.");
+                }
+            });
+        }
+    </script>
+ *@
+
+   @*  <script>
+        function btnSearch() {
+            $.ajax({
+                url: '@Url.Action("Statusinfo", "Admin")',
+                type: "GET",
+                data: {
+                    memo: $('#textSearch').val()
+                },
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    $('#memoNumber').text(result.memoNo);
+                    $('#customerName').text(result.name);
+                    $('#contactNumber').text(result.contact);
+                    $('#address').text(result.address);
+                    $('#orderDate').text(result.orderDate);
+
+                    // Clear previous items
+                    $('#item').empty();
+
+                    // Update items
+                    $.each(result.items, function (index, item) {
+                        $('#item').append('<li>' + item.itemName + ': ' + item.compQty + '/' + item.orderedQty + '</li>');
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    // Optionally, display an error message to the user
+                    alert("An error occurred while fetching data. Please try again later.");
+                }
+            });
+        }
+    </script> *@
+
+
+    <script>
+        $(document).ready(function () {
+            // Set the default selected value to 'E'
+            $('#gradeSelect').val('E');
+        });
+        function btnSearch()
+        {
+            var issuccseed = false;
+
+            var memo = $('#textSearch').val();
+            var series = $('#gradeSelect').val();
+
+            // First AJAX call for Statusinfo
+            $.ajax({
+                url: '@Url.Action("Statusinfo", "Admin")',
+                type: "GET",
+                data: {
+                    memo: memo,
+                    series: series
+                },
+                dataType: "json",
+                success: function (result) {
+
+                    if (result.msg == "Data Found") {
+                        var data = result.data;
+                        // Update the elements with the result from Statusinfo
+                        $('#memoNumber').text(data.memoNo);
+                        $('#customerName').text(data.name);
+                        $('#contactNumber').text(data.contact);
+                        $('#address').text(data.address);
+                        $('#orderDate').text(data.orderDate);
+
+                        issuccseed = true;
+
+                        $.ajax({
+                            url: '@Url.Action("SearchInfoCut", "Admin")',
+                            type: "GET",
+                            data: {
+                                memo: memo,
+                                series: series
+                            },
+                            dataType: "json",
+                            success: function (result1) {
+                                console.log(result1);
+
+
+                                if (result1.msg == "Data Found") {
+                                    var data1 = result1.data;
+                                    console.log(data1);
+                                    var workStatus = data1.workStatus;
+
+                                    // Set color based on workStatus
+                                    var colorClass1;
+                                    if (workStatus === "Completed") {
+                                        colorClass1 = "btn-success";
+                                    } else if (workStatus === "In progress") {
+                                        colorClass1 = "btn-warning";
+                                    } else {
+                                        colorClass1 = "btn-danger";
+                                    }
+
+                                    // Set the text color of #WorkStatus element
+                                    $('#WorkStatus').css('color', colorClass1).text(workStatus);
+
+                                    // Apply Bootstrap contextual classes to the button based on workStatus
+                                    $('.modal-trigger').removeClass('btn-success btn-warning btn-danger').addClass(colorClass1);
+
+                                    $('#statusTable tbody').empty();
+
+                                    // Iterate over each record and append a new row to the table
+                                    data1.lists.forEach(function (item1) {
+                                        var row1 = '<tr>' +
+                                            '<td>' + item1.itemName + '</td>' +
+                                            '<td>' + item1.compQty + '/' + item1.orderedQty + '</td>' +
+                                            '</tr>';
+                                        $('#statusTable tbody').append(row1);
+                                    });
+
+                                    issuccseed = true;
+
+                                    $.ajax({
+                                        url: '@Url.Action("SearchInfoStitch", "Admin")',
+                                        type: "GET",
+                                        data: {
+                                            memo: memo,
+                                            series: series
+                                        },
+                                        dataType: "json",
+                                        success: function (result2) {
+                                            console.log(result2);
+
+                                            if (result2.msg == "Data Found") {
+                                                var data2 = result2.data;
+
+                                                var workStatus1 = data2.workStatus;
+
+                                                // Set color based on workStatus
+                                                var colorClass2;
+                                                if (workStatus1 === "Completed") {
+                                                    colorClass2 = "btn-success";
+                                                } else if (workStatus1 === "In progress") {
+                                                    colorClass2 = "btn-warning";
+                                                } else {
+                                                    colorClass2 = "btn-danger";
+                                                }
+
+                                                // Set the text color of #WorkStatus element
+                                                $('#WorkStatusA').css('color', colorClass2).text(workStatus1);
+
+                                                // Apply Bootstrap contextual classes to the button based on workStatus
+                                                $('.modal-trigger1').removeClass('btn-success btn-warning btn-danger').addClass(colorClass2);
+
+                                                // Clear existing table rows
+                                                $('#statusTableA tbody').empty();
+
+                                                // Iterate over each record and append a new row to the table
+                                                data2.lists.forEach(function (item2) {
+                                                    var row2 = '<tr>' +
+                                                        '<td>' + item2.itemName + '</td>' +
+                                                        '<td>' + item2.compQty + '/' + item2.orderedQty + '</td>' +
+                                                        '</tr>';
+                                                    $('#statusTableA tbody').append(row2);
+                                                });
+
+                                                $.ajax({
+                                                    url: '@Url.Action("SearchInfoIron", "Admin")',
+                                                    type: "GET",
+                                                    data: {
+                                                        memo: memo,
+                                                        series: series
+                                                    },
+                                                    dataType: "json",
+                                                    success: function (result3) {
+                                                        console.log(result3);
+
+                                                        if (result3.msg == "Data Found") {
+                                                            var data3 = result3.data;
+
+                                                            var workStatus2 = data3.workStatus;
+
+                                                            // Set color based on workStatus
+                                                            var colorClass3;
+                                                            if (workStatus2 === "Completed") {
+                                                                colorClass3 = "btn-success";
+                                                            } else if (workStatus2 === "In progress") {
+                                                                colorClass3= "btn-warning";
+                                                            } else {
+                                                                colorClass3 = "btn-danger";
+                                                            }
+
+                                                            // Set the text color of #WorkStatus element
+                                                            $('#WorkStatusB').css('color', colorClass3).text(workStatus2);
+
+                                                            // Apply Bootstrap contextual classes to the button based on workStatus
+                                                            $('.modal-trigger2').removeClass('btn-success btn-warning btn-danger').addClass(colorClass3);
+
+                                                            // Clear existing table rows
+                                                            $('#statusTableB tbody').empty();
+
+                                                            // Iterate over each record and append a new row to the table
+                                                            data3.lists.forEach(function (item3) {
+                                                                var row3 = '<tr>' +
+                                                                    '<td>' + item3.itemName + '</td>' +
+                                                                    '<td>' + item3.compQty + '/' + item3.orderedQty + '</td>' +
+                                                                    '</tr>';
+                                                                $('#statusTableB tbody').append(row3);
+                                                            });
+
+                                                            issuccseed = true;
+                                                        }
+                                                        else {
+                                                            issuccseed = false;
+
+                                                            alert(result3.msg);
+                                                        }
+
+
+                                                    },
+                                                    error: function (xhr, status, error) {
+                                                        console.error(xhr.responseText);
+                                                        // Optionally, display an error message to the user
+                                                        alert("An error occurred while fetching data for SearchInfoList. Please try again later.");
+                                                    }
+                                                });
+
+                                                issuccseed = true;
+                                            }
+                                            else {
+                                                issuccseed = false;
+
+                                                alert(result2.msg);
+                                            }
+
+
+                                        },
+                                        error: function (xhr, status, error) {
+                                            console.error(xhr.responseText);
+                                            // Optionally, display an error message to the user
+                                            alert("An error occurred while fetching data for SearchInfoList. Please try again later.");
+                                        }
+                                    });
+                                }
+                                else {
+                                    issuccseed = false;
+
+                                    alert(result1.msg);
+                                }
+
+
+
+                                // Open the modal after populating data
+
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                // Optionally, display an error message to the user
+                                alert("An error occurred while fetching data for SearchInfoList. Please try again later.");
+                            }
+                        });
+                    }
+                    else 
+                    {
+                        issuccseed = false;
+
+                        alert(result.msg);
+                    }
+                   
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    // Optionally, display an error message to the user
+                    alert("An error occurred while fetching data for Statusinfo. Please try again later.");
+                }
+            });
+
+            // Second AJAX call for SearchInfoCut
+            // $.ajax({
+            //     url: '@Url.Action("SearchInfoCut", "Admin")',
+            //     type: "GET",
+            //     data: { memo: memo },
+            //     dataType: "json",
+            //     success: function (result) {
+            //         console.log(result);
+            //         var workStatus = result.workStatus;
+
+            //         // Set color based on workStatus
+            //         var colorClass;
+            //         if (workStatus === "Completed") {
+            //             colorClass = "btn-success";
+            //         } else if (workStatus === "In progress") {
+            //             colorClass = "btn-warning";
+            //         } else {
+            //             colorClass = "btn-danger";
+            //         }
+
+            //         // Set the text color of #WorkStatus element
+            //         $('#WorkStatus').css('color', colorClass).text(workStatus);
+
+            //         // Apply Bootstrap contextual classes to the button based on workStatus
+            //         $('.modal-trigger').removeClass('btn-success btn-warning btn-danger').addClass(colorClass);
+
+
+
+            //         $('#statusTable tbody').empty();
+
+            //         // Iterate over each record and append a new row to the table
+            //         result.lists.forEach(function (item) {
+                       
+            //             var row = '<tr>' +
+            //                 '<td>' + item.itemName + '</td>' +
+            //                 '<td>' + item.compQty + '/' + item.orderedQty + '</td>' +
+            //                 '</tr>';
+            //             $('#statusTable tbody').append(row);
+            //         });
+            //     },
+            //     error: function (xhr, status, error) {
+            //         console.error(xhr.responseText);
+            //         // Optionally, display an error message to the user
+            //         alert("An error occurred while fetching data for SearchInfoList. Please try again later.");
+            //     }
+            // });
+
+            if (issuccseed)
+            {
+              
+            } 
+            
+            
+            if (issuccseed)
+            {
+               
+            } 
+            
+            
+            if (issuccseed)
+            {
+               
+
+            }
+
+            
+
+        //Third AJAX call for SearchInfoStitch
+            
+
+        // Fourth AJAX call for SearchInfoIron
+           
+
+        // Fifth AJAX call for SearchInfoDeliver
+            // $.ajax({
+            //         url: '@Url.Action("SearchInfoDeliver", "Admin")',
+            //     type: "GET",
+            //         data: {
+            //             memo: memo,
+            //             series: series
+            //         },
+            //     dataType: "json",
+            //         success: function (result) {
+            //             console.log(result);
+
+            //             var workStatus = result.workStatus;
+
+            //             // Set color based on workStatus
+            //             var colorClass;
+            //             if (workStatus === "Completed") {
+            //                 colorClass = "btn-success";
+            //             } else if (workStatus === "In progress") {
+            //                 colorClass = "btn-warning";
+            //             } else {
+            //                 colorClass = "btn-danger";
+            //             }
+
+            //             // Set the text color of #WorkStatus element
+            //             $('#WorkStatusC').css('color', colorClass).text(workStatus);
+
+            //             // Apply Bootstrap contextual classes to the button based on workStatus
+            //             $('.modal-trigger3').removeClass('btn-success btn-warning btn-danger').addClass(colorClass);
+
+            //             // Clear existing table rows
+            //             $('#statusTableC tbody').empty();
+
+            //             // Iterate over each record and append a new row to the table
+            //             result.lists.forEach(function (item) {
+            //                 var row = '<tr>' +
+            //                     '<td>' + item.itemName + '</td>' +
+            //                     '<td>' + item.compQty + '/' + item.orderedQty + '</td>' +
+            //                     '</tr>';
+            //                 $('#statusTableC tbody').append(row);
+            //             });
+            //         },
+            //     error: function (xhr, status, error) {
+            //         console.error(xhr.responseText);
+            //         // Optionally, display an error message to the user
+            //         alert("An error occurred while fetching data for SearchInfoList. Please try again later.");
+            //     }
+            // });
+        }
+    </script>
+
+
+
+   @*  <script>
+        // Get the current date
+        var currentDate = new Date();
+
+        // Format the date
+        var dateString = currentDate.toLocaleDateString("en-US", {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Display the formatted date
+        document.getElementById("date").innerHTML = dateString;
+    </script> *@
+@*     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/js/myjs.js"></script>
+    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../assets/js/dashboard.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> *@
+@* *@</body>
+
+</html> 

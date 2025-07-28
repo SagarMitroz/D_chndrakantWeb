@@ -1,0 +1,14 @@
+2025-07-10 10:43:21: --------------------------------------------------------------------------------------------
+2025-07-10 10:43:21: gettrasaction accessed.
+2025-07-10 10:43:21: gettrasaction employeid: 2
+2025-07-10 10:43:21: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-10 10:43:21: Employee Name: Vijay
+2025-07-10 10:43:21: gettrasaction (JSON) accessed.
+2025-07-10 10:44:08: --------------------------------------------------------------------------------------------
+2025-07-10 10:44:08: gettrasaction accessed.
+2025-07-10 10:44:08: gettrasaction employeid: 1
+2025-07-10 10:44:08: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-10 10:44:08: Employee Name: Ajay
+2025-07-10 10:44:08: gettrasaction (JSON) accessed.
+2025-07-10 10:44:12: gettrasaction (JSON) accessed.
+2025-07-10 10:44:13: gettrasaction (JSON) accessed.

@@ -1,0 +1,128 @@
+﻿@model D_Chandrakant.Models.AuthLoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Columns</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+        .container {
+            height: calc(100vh - 6rem);
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+            overflow-y: hidden;
+            border-radius:5px;
+            border:solid 2px black;
+        }
+
+        .logo-dchandra
+        {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            align-items: center;
+        }
+        .card
+        {
+            margin-top: 18%;
+        }
+
+        @@media screen and (min-width: 768px) and (max-width: 1199px){
+            .card {
+                max-width: 423px;
+                margin-top: 137px;
+
+            }
+
+            a {
+                color: #007bff;
+                text-decoration: none;
+                background-color: transparent;
+                margin-left: -16px;
+            }
+        }
+
+
+
+     
+  </style>
+</head>
+<body>
+    <div class="container col-11"  >
+    <div class="row d-flex">
+     <div class="col-6 bg-primary vh-100 logo-dchandra">
+                <img src="../assets/images/images/Layer_x0020_1.png" style="max-width:300px; margin-top: -137px;">
+                <h3 class="text-white">D.Chandrakant Tailors </h3>
+               
+      </div>
+            <div class="col-6 bg-light text-white vh-100">
+
+                <div class="card col-8 mx-auto" >
+                    <div class="card-body">
+                        <h5 class="card-title " style="color:black;text-align: -webkit-center;">Admin Login</h5>
+
+                        <form asp-action="AdminLogin" asp-controller="AuthAd" method="post">
+
+                            <div class="mb-3 m-4">
+
+                                <label for="exampleInputEmail1" class="form-label" asp-for="Username" style="color:black;">Username</label>
+                                <input asp-for="Username" class="form-control" placeholder="Username">
+                                <span asp-validation-for="Username" class="text-danger"></span>
+
+                            </div>
+                            <div class="mb-4 m-4">
+                                <label for="exampleInputPassword1" class="form-label" asp-for="Password" style="color:black">Password</label>
+                                <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="form-check ml-4">
+                                   
+                                </div>
+                              
+
+                            </div>
+
+
+                            <div class="text-center  ">
+
+                                @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+                                {
+                                    <div class="text-danger mb-2 fw-bold ">@ViewData["ErrorMessage"]</div>
+                                }
+                                <button class=" form-control btn btn-primary text-center rounded-2 border-primary bg-primary text-white" style="max-width:88%"  type="submit">Sign in</button>
+
+
+                            </div>
+                           
+
+
+
+                        </form>
+                        <div class=" mt-2" style="margin-left:31%">
+                            <a asp-controller="AuthEmp" asp-action="EmpLogin">Go To Employee Login</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+  </div>
+
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+

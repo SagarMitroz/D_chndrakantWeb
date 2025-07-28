@@ -1,0 +1,11 @@
+@media print {
+    .card {
+        /* Adjust width and height as needed */
+        width: 800px !important;
+        height: 600px !important;
+        /* Additional styles as needed */
+        margin: auto !important; /* Centering the card */
+        border: 1px solid black !important; /* Adding a border */
+        padding: 20px !important; /* Adding padding */
+    }
+}

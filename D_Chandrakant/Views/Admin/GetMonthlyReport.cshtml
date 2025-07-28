@@ -1,0 +1,672 @@
+﻿@model IEnumerable<D_Chandrakant.Models.BillHeaderMvModel>
+
+@{
+    Layout = "_Layout";
+    var srn = 1;
+}
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetMonthlyReport</title>
+
+   @*  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+    <link href="~/assets/vendor/fonts/boxicons.css" rel="stylesheet" />
+    <link href="~/assets/vendor/css/core.css" rel="stylesheet" />
+    <link href="~/assets/vendor/css/theme-default.css" rel="stylesheet" />
+    <link href="~/assets/css/demo.css" rel="stylesheet" />
+    <link href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/assets/vendor/libs/apex-charts/apex-charts.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/assets/vendor/js/helpers.js"></script>
+    <script src="~/assets/js/config.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+ *@
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" class="bg-black" href="../assets/images/logos/Favicon.png" />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @* <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
+
+
+
+
+
+    <style>
+        tbody, td, tfoot, th, thead, tr {
+            border-color: #e9e9e9 !important;
+        }
+
+        table.dataTable.no-footer {
+            border-color: #e9e9e9 !important;
+        }
+
+        .headerrow {
+            background: #dae1e5;
+            height: 60px;
+            vertical-align: middle;
+        }
+
+        .center-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            margin-left: 0.5em;
+            border-radius: 20px;
+            height: 35px;
+            outline-offset: 0px;
+            padding: 10px;
+            border: 2px solid #bdbdbd;
+        }
+
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            color: #333 !important;
+            border-radius: 20px;
+            border: 0px solid #979797;
+            background: #ffe1e1;
+        }
+
+        table.dataTable tbody th, table.dataTable tbody td {
+            padding: 15px 10px;
+        }
+
+        .menu-submenu {
+            transition: max-height 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+            .menu-submenu.show {
+                max-height: 500px; /* Adjust as needed */
+            }
+        /* Style for the modal content */
+        .modal-content {
+            max-width: 400px;
+            border-radius: 8px;
+            text-align: center; /* Center-align text */
+        }
+
+        /* Style for the modal body */
+        .modal-body {
+            padding: 20px;
+            font-weight: bold; /* Make text bold */
+        }
+
+        /* Style for the OK button */
+        .btn-ok {
+            background-color: #3d952b;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+        }
+
+            .btn-ok:hover {
+                background-color: #3d952b;
+            }
+    </style>
+</head>
+
+<body class="bg-light-primary">
+
+
+
+
+
+
+
+    @*<form id="monthlyReportForm">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate">
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate">
+
+    <button type="button" onclick="getMonthlyReport()">Get Report</button>
+    </form>*@
+
+
+
+
+    <section class="Emp-management mb-4">
+        <header class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <h2 class="ml-2">Bill Report</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mt-2 mb-2">
+                        <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: ;">
+                            <i class="bi bi-calendar3"></i>&nbsp;
+                            <span id="dggf"></span> <i class="fa fa-caret-down"></i>
+                        </div>
+                    </div>
+
+                 
+
+                    <div class="col-md-3 mt-2 mb-2">
+                        
+                            <button class="btn  border-primary rounded-pill bg-primary text-white w-30 " type="button" onclick="getMonthlyReport()" style="margin-top: 0px;">Get Report</button>
+                       
+                    </div>
+
+                    <div class="col-3 mt-2 mb-2" ">
+                        <div class="form-group">
+                            <button id="downloadPdfBtn" class="btn border-primary rounded-pill bg-primary text-white w-30 " type="button" style="display: none;">Download PDF</button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                    @*<div class="loading-spinner" style="display: none;">
+                <img src="loading.gif" alt="Loading..." />
+                </div>*@
+
+
+
+            </div>
+
+
+            </div>
+        </header>
+        </div>
+        </div>
+    </section>
+
+
+    <div id="tab2Content" class="tab-content ">
+        <div class="card" style="padding: 30px;box-shadow:0 7px 10px 10px rgb(7 38 72 / 12%);">
+            <table class="table" id="example">
+                <thead>
+                    <tr style="background-color: #E1E2FF;">
+
+                        <th>SR<br /> No.</th>
+                        <th>Customer Name</th>
+                        <th>Customer Address</th>
+                        <th>Memo No</th>
+                        <th>Memo Date</th>
+                        <th>Customer Mobile</th>
+                        <th>Delivery Date</th>
+
+                        <th>Item Id</th>
+                        <th>Item Name</th>
+                        <th>Qty</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0" id="employeeTableBody">
+                                @{
+                                    int count = 1;
+                                }
+                                @foreach (var item in Model)
+                                {
+                        <tr>
+                            <td>@srn</td>
+                            <td>@item.CustomerName</td>
+                            <td>@item.CustomerAddress</td>
+                            <td>@item.MemoNo</td>
+                            <td>@item.MemoDate</td>
+                            <td>@item.CustomerMobile</td>
+                            <td>@item.DeliveryDate</td>
+
+                                        @if (item.itemlists.Any())
+                                        {
+
+                                            @foreach (var itemA in item.itemlists)
+                                            {
+
+                                                <td>@itemA.ItemId</td>
+                                                <td>@itemA.ItemName</td>
+                                                <td>@itemA.Qty</td>
+                                                <td>@itemA.Rate</td>
+                                                <td>@itemA.Amount</td>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                <td colspan="5"></td>
+                                        }
+
+
+
+                        </tr>
+                                    srn++;
+                                }
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+    <script>
+        // Get the current date
+        var currentDate = new Date();
+
+        // Format the date
+        var dateString = currentDate.toLocaleDateString("en-US", {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Display the formatted date
+        document.getElementById("date").innerHTML = dateString;
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+
+            function cb(start, end) {
+                $('#reportrange span').html(start.format(' DD/MM/YYYY') + ' - ' + end.format(' DD/MM/YYYY'));
+            }
+
+            $('#reportrange').daterangepicker({
+
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+
+            cb(start, end);
+
+        });
+    </script>
+
+
+    <script>
+
+
+
+        //function initializeDataTable() {
+        //    $('#example').DataTable({
+        //        dom: 'Bfrtip',
+        //        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        //    });
+        //}
+
+
+        $(document).ready(function () {
+            initializeDataTable();
+        });
+
+
+        function initializeDataTable() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                "pageLength": 50,
+                buttons: [
+                    'excel', // Keep existing buttons
+                    {
+                        extend: 'pdf',
+                        text: 'PDF', // Custom button text
+                        action: function () {
+                            //generateCustomPDF();
+                            $('#downloadPdfBtn').click();
+                        }
+                    }
+                ]
+
+            });
+            
+        }
+       
+
+        pdfMake.fonts = {
+            Mangal: {
+                normal: "/js/mangal.ttf",
+                bold: "/js/opensans-bold.ttf",
+                italics: "/js/opensans-italic.ttf",
+                bolditalics: "/js/opensans-bolditalic.ttf"
+            }
+        };
+
+
+
+
+
+
+        // $(document).ready(function () {
+        //     $('#downloadPdfBtn').click(function () {
+        //         $('.loading-spinner').show();
+
+        //         var dateRange = $("#dggf").text().trim();
+
+        //         // Split the date range into start and end dates
+        //         var dates = dateRange.split("-");
+        //         var startDate = dates[0].trim();
+        //         var endDate = dates[1].trim();
+
+        //         $.ajax({
+        //             type: "POST",
+        //             url: '/Admin/getmydata', // Ensure this URL is correct
+        //             data: {
+        //                 startDate: startDate,
+        //                 endDate: endDate,
+                       
+        //             },
+        //             success: function (response)
+        //             {
+        //                 alert("Enter");
+        //                 var newWindow = window.open('/Admin/getmydata', '_blank');
+
+        //                 setTimeout(function () {
+        //                     newWindow.print();
+        //                 }, 1000);
+        //             },
+        //             error: function (xhr, status, error) {
+        //                 // Handle error if any
+        //             }
+        //         });
+        //     });
+        // });
+
+
+        $(document).ready(function () {
+            $('#downloadPdfBtn').click(function () {
+
+                $('.loading-spinner').show();
+
+                
+                    var dateRange = $("#dggf").text().trim();
+
+                    // Split the date range into start and end dates
+                    var dates = dateRange.split("-");
+                    var startDate1 = dates[0].trim();
+                   var endDate1 = dates[1].trim();
+
+                    // var startDate = dates[0].trim();
+
+                    // function convertDateFormat(date) {
+                    //     var parts = date.split('/');
+                    //     return parts[2] + '-' + parts[1] + '-' + parts[0];
+                    // }
+
+                    // startDate = convertDateFormat(startDate);
+
+                    // console.log(startDate); // Will output the date in 'YYYY-MM-DD' format
+
+                    // alert(startDate);
+
+
+                // Sample array of dates in 'DD/MM/YYYY' format
+                var dates = [startDate1, endDate1];
+
+                // Function to convert 'DD/MM/YYYY' to 'YYYY-MM-DD'
+                function convertDateFormat(date) {
+                    var parts = date.split('/');
+                    return parts[2] + '-' + parts[1] + '-' + parts[0];
+                }
+
+                // Convert startDate and endDate
+                var startDate = convertDateFormat(dates[0].trim());
+                var endDate = convertDateFormat(dates[1].trim());
+
+                console.log(startDate); // Outputs: '2024-05-25'
+                console.log(endDate);   // Outputs: '2024-06-30'
+
+
+
+
+                var url = '/Admin/getmydata?startDate=' + startDate + '&endDate=' + endDate;
+
+                var newWindow = window.open(url, '_blank');
+
+                setTimeout(function () {
+                    newWindow.print();
+                }, 1000);
+
+            });
+
+        });
+
+        //print Pdf end code
+
+        function generateCustomPDF() {
+            var dateRange = $("#dggf").text().trim();
+
+            // Split the date range into start and end dates
+            var dates = dateRange.split("-");
+            var startDate = dates[0].trim();
+            var endDate = dates[1].trim();
+
+
+
+            $.ajax({
+                url: '/Admin/GetMonthlyReportJson',
+                type: 'GET',
+                data: {
+                    startDate: startDate,
+                    endDate: endDate,
+                },
+                success: function (data) {
+                    var docDefinition = {
+                        content: []
+                    };
+                    
+                    
+                    
+                    data.forEach(function (emp, index) {
+                        docDefinition.content.push(
+                            { text: 'डी.चंद्रकांत', alignment: 'center' },
+                            { text: 'मेन्स वेअर्स', alignment: 'center' },
+                            { text: 'चितळे रोड, अहिल्यानगर. फोन: 7083969199', alignment: 'center' },
+                            { text: '' }, // Empty line
+                            { text: 'नाव: ' + emp.customerName + '          दिनांक: ' + emp.memoDate },
+                            { text: 'पत्ता: ' + emp.customerAddress + '          मो.: ' + emp.customerMobile },
+                            { text: 'नंबर: ' + emp.memoNo + '          डी.दिनांक: ' + emp.deliveryDate },
+                            { text: '' }, // Empty line
+                            {
+                                table: {
+                                    body: [
+                                        ["कोड", "वर्णन", "नग", "दर", "रुपये"],
+                                        [emp.itemId, emp.itemName, emp.qty, emp.rate, emp.amount]
+                                    ]
+                                }
+                            },
+                            { text: '' } // Empty line
+                        );
+
+                        if ((index + 1) % 3 === 0 && index !== data.length - 1) {
+                            docDefinition.content.push({ text: 'Page Break', pageBreak: 'after' });
+                        }
+                    });
+
+                    pdfMake.createPdf(docDefinition).download('monthly_report.pdf');
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Error: ' + textStatus);
+                }
+            });
+        }
+
+
+
+
+
+        function getMonthlyReport() {
+            var dateRange = $("#dggf").text().trim();
+           
+            // Split the date range into start and end dates
+            var dates = dateRange.split("-");
+            var startDate = dates[0].trim();
+            var endDate = dates[1].trim();
+           
+
+            $.ajax({
+                url: '/Admin/GetMonthlyReportJson',
+                type: 'Post',
+               
+                data: {
+                    startDate: startDate,
+                    endDate: endDate,
+                },
+                success: function (data) {
+                    if ($.fn.DataTable.isDataTable('#example')) {
+                        $('#example').DataTable().destroy();
+                    }
+
+
+                    $('#employeeTableBody').empty();
+
+                    console.log(data.filterviewModels);
+                    //alert("Enter")
+
+                    var serialNo = 1;
+
+
+
+                    data.forEach(function (emp) {
+                        var row = '<tr>' +
+                            '<td>' + serialNo + '</td>' +
+                            '<td>' + emp.customerName + '</td>' +
+                            '<td>' + emp.customerAddress + '</td>' +
+                            '<td>' + emp.memoNo + '</td>' +
+                            '<td>' + emp.memoDate + '</td>' +
+                            '<td>' + emp.customerMobile + '</td>' +
+                            '<td>' + emp.deliveryDate + '</td>' +
+
+                            '<td>' + emp.itemId + '</td>' +
+                            '<td>' + emp.itemName + '</td>' +
+                            '<td>' + emp.qty + '</td>' +
+                            '<td>' + emp.rate + '</td>' +
+                            '<td>' + emp.amount + '</td>' +
+
+                            '</tr>';
+                        $('#employeeTableBody').append(row);
+
+
+
+                        if (emp.itemlists && emp.itemlists.length > 0) {
+                            emp.itemlists.forEach(function (item) {
+                                var itemRow = '<tr>' +
+                                    '<td style="color: white;">' + serialNo + '</td><td></td><td></td><td></td><td></td><td></td><td></td>' +
+                                    '<td>' + item.itemId + '</td>' +
+                                    '<td>' + item.itemName + '</td>' +
+                                    '<td>' + item.qty + '</td>' +
+                                    '<td>' + item.rate + '</td>' +
+                                    '<td>' + item.amount + '</td>' +
+
+                                    '</tr>';
+                                $('#employeeTableBody').append(itemRow);
+                            });
+
+                            var itemRow = '<tr>' +
+                                '<td style="color: white;">' + serialNo + '</td><td></td><td></td><td></td><td></td><td></td><td></td>' +
+                                '<td></td>' +
+                                '<td></td>' +
+                                '<td></td>' +
+                                '<td>Total</td>' +
+                                '<td>' + emp.totalAmount + '</td>' +
+
+                                '</tr>';
+                            $('#employeeTableBody').append(itemRow);
+
+                            var itemRow = '<tr>' +
+                                '<td style="color: white;">' + serialNo + '</td><td></td><td></td><td></td><td></td><td></td><td></td>' +
+                                '<td></td>' +
+                                '<td></td>' +
+                                '<td></td>' +
+                                '<td></td>' +
+                                '<td></td>' +
+
+                                '</tr>';
+                            $('#employeeTableBody').append(itemRow);
+                        }
+
+                        serialNo++;
+                    });
+
+                    initializeDataTable();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Error: ' + textStatus);
+                }
+            });
+        }
+
+
+    </script>
+
+
+    <script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+ 
+
+
+    
+</body>
+

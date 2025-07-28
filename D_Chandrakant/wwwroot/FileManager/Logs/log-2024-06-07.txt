@@ -1,0 +1,22 @@
+2024-06-07 10:35:10: --------------------------------------------------------------------------------------------
+2024-06-07 10:35:10: gettrasaction  accessed.
+2024-06-07 10:35:10: gettrasaction  1.
+2024-06-07 10:35:13: gettrasaction  1.
+2024-06-07 10:35:13: gettrasaction Date 7/6/2024 10:35:13 am.
+2024-06-07 10:35:13: gettrasaction  newdateforsave 2024-06-07 10:35:13.
+2024-06-07 10:35:13: gettrasaction startdateTimenew 7/6/2024 10:35:13 am.
+2024-06-07 10:35:13: gettrasaction startdateTimenew 7/6/2024 10:35:13 am.
+2024-06-07 10:35:13: gettrasaction newDateString 06/07/2024 10:35:13.
+2024-06-07 10:35:13: gettrasaction newDateString 06/07/2024 10:35:13.
+2024-06-07 10:35:13: gettrasaction givenDate111 7/6/2024 10:35:13 am.
+2024-06-07 10:35:13: gettrasaction fromDate 1/6/2024 12:00:00 am.
+2024-06-07 10:35:13: gettrasaction toDate 30/6/2024 12:00:00 am.
+2024-06-07 10:35:13: gettrasaction format1 System.String[].
+2024-06-07 10:35:13: gettrasaction fromDate 1/6/2024 12:00:00 am.
+2024-06-07 10:35:13: gettrasaction newDateString1 06/01/2024 00:00:00.
+2024-06-07 10:35:13: gettrasaction toDate 30/6/2024 12:00:00 am.
+2024-06-07 10:35:13: gettrasaction newDateString2 06/30/2024 00:00:00.
+2024-06-07 10:35:13: gettrasaction  1.
+2024-06-07 10:35:13: gettrasaction givenDatestartdate 1/6/2024 12:00:00 am.
+2024-06-07 10:35:13: gettrasaction  givenDateendddate 30/6/2024 12:00:00 am.
+2024-06-07 10:35:13: gettrasaction empname Ajay.

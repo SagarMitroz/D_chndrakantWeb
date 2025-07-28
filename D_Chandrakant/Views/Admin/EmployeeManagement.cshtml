@@ -1,0 +1,1094 @@
+﻿@model D_Chandrakant.Models.EmpModel
+
+@{
+    Layout = "_Layout";
+    // Layout = null;
+    var SerialNo = 1;
+    ViewData["Title"] = "Admin";
+}
+
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>D.Chandrakant Tailors </title>
+        <link rel="shortcut icon" type="image/png" class="bg-black" href="../assets/images/logos/Favicon.png" />
+        <link rel="stylesheet" href="~/assets/css/styles.min.css" />
+        <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+      
+        <link rel="stylesheet" href="path/to/styles.css">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+@* 
+    <link rel="stylesheet" href="/css/Datatable.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+ *@
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.css" rel="stylesheet" />
+    <style>
+        tbody, td, tfoot, th, thead, tr {
+            border-color: #e9e9e9 !important;
+        }
+
+        table.dataTable.no-footer {
+            border-color: #e9e9e9 !important;
+        }
+
+        .headerrow {
+            background: #dae1e5;
+            height: 60px;
+            vertical-align: middle;
+        }
+
+        .center-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            margin-left: 0.5em;
+            border-radius: 20px;
+            height: 35px;
+            outline-offset: 0px;
+            padding: 10px;
+            border: 2px solid #bdbdbd;
+        }
+
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            color: #333 !important;
+            border-radius: 20px;
+            border: 0px solid #979797;
+            background: #ffe1e1;
+        }
+
+        table.dataTable tbody th, table.dataTable tbody td {
+            padding: 15px 10px;
+        }
+
+        .menu-submenu {
+            transition: max-height 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+            .menu-submenu.show {
+                max-height: 500px; /* Adjust as needed */
+            }
+
+        .pagination {
+            justify-content: center;
+        }
+
+        .profile-link {
+            cursor: pointer;
+        }
+   
+
+
+
+    
+
+        .profile-link {
+            cursor: pointer;
+        }
+
+
+      
+     
+
+     @@media print{
+
+            #S1
+            {
+                display:none;
+            }
+            #S2 
+            {
+                display: none;
+            }
+
+            #printButton
+            {
+                display: none;
+            }
+
+            #S3
+            {
+                height:600px;
+                width:100%;
+
+            }
+
+      }
+       
+
+
+
+    </style>
+    </head>
+
+  <body class="bg-light-primary">
+
+   
+
+
+  
+        <div class="container-fluid" id="S1">
+            <div class="row">
+                <div class="col-8">
+                    <h2> Employee Management</h2>
+                    <a class="btn dropdown-toggle border-primary rounded-pill bg-white text-primary" href="#" role="button"
+                       data-bs-toggle="dropdown">
+                        Department
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="filterTable('Cutting')">Cutting</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="filterTable('Stitching')">Stitching</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="filterTable('Ironing')">Ironing</a></li>
+                    </ul>
+
+
+
+                    <a class="btn dropdown-toggle border-primary rounded-pill bg-white text-primary" href="#" role="button"
+                       data-bs-toggle="dropdown">
+                        Emptype
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="filterTable12('Permanent')">Permanent</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="filterTable12('Pay on work')">Pay on work</a></li>
+                   
+                    </ul>
+
+                    <img src="/assets/images/Images3/refresh1.png" style="height: 38px; width: 42px;" onclick="pagerefresh()" />
+                   
+
+                    
+
+                </div>
+
+                <div class="col-4 mt-3">
+                    <div style="display: flex; justify-content: flex-end;">
+                        <div class="dropdown">
+                            <div class="mr-2" style="display: flex; justify-content: flex-end;">
+                                <div class="d-flex ">
+                                    <button class=" btn border-primary rounded-pill bg-primary text-white  " data-bs-toggle="modal" data-bs-target="#basicModal" style="width: 200px;">
+                                        Add New Employee
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        
+        </div>
+        
+ 
+
+ @*   <div class="container-fluid">
+      
+
+    </div> *@
+    <div class="container-fluid mt-3" style="display:flex;">
+        <div class="col-9 bg-light "  id="S2">
+            <div class="table-responsive">
+                <table table class="table" id="example" style="text-align:center;">
+                    <thead>
+                        <tr style="background-color: #E1E2FF;">
+                            <th>Sr No</th>
+                            <th>Name</th>
+                            <th>Id No</th>
+                            <th>Department</th>
+                            <th>Employee Type</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeTableBody">
+                        @if (Model.Employees.Count() > 0)
+                        {
+                            foreach (var emp in Model.Employees)
+                            {
+                                <tr>
+                                    <td>@SerialNo</td>
+                                    <td class="border-bottom-0">
+                                        <a class="profile-link" onclick="showDetails('@emp.Name')">@emp.Name</a>
+
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        @emp.Id
+                                    </td>
+                                    <!-- Omitted section -->
+                                    <td class="border-bottom-0">
+                                        @emp.DeptFk
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        @emp.EmpType
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <button class="btn btn-primary btn-sm" onclick="openEditModal('@emp.Id', '@emp.Name','@emp.DeptFk','@emp.AccountNo','@emp.PfNo', '@emp.EmpType', '@emp.Address','@emp.MobileNo','@emp.SalaryEmp')" style=" width:60px" data-bs-toggle="modal" data-bs-target="#basicModal1">Edit</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" style="width:60px" onclick="openDeleteModal('@emp.Id')">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                // @Html.HiddenFor(m => m.ProfileImg)
+                                @Html.HiddenFor(m => m.SalaryEmp)
+                                @Html.HiddenFor(m => m.MobileNo)
+                                @Html.HiddenFor(m => m.AccountNo)
+                                @Html.HiddenFor(m => m.PfNo)
+                                @Html.HiddenFor(m => m.Address)
+                                @Html.HiddenFor(m => m.ProfileImg)
+                                SerialNo++;
+                            }
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+        <div class="col-3" > 
+
+            <div class="card mx-auto" style="width: 18rem;height:400px;border:1px solid black" id="S3">
+                <img class="mx-auto" src="/assets/images/Images3/Logo_Blue.png" style="width:130px; height:100px;" alt="Alternate Text" />
+               
+                    <img id="profileImage" class="mx-auto" src="/assets/images/Images3/UserImg.png" style="border-radius: 3px;width:120px;height: 130px; ">
+                    <table class=" mx-auto mt-1" style="text-align: left;margin-left: 29px;">
+                        <tr>
+                            <td>Name :</td>
+                            <td id="profileName"></td>
+
+                        </tr>
+                        <tr>
+                            <td>Department :</td>
+                            <td id="profileDept"></td>
+
+                        </tr>
+                        <tr>
+                            <td>Address :</td>
+                            <td id="profileAddress"></td>
+
+                        </tr>
+                        <tr>
+                            <td>Mobile :</td>
+                            <td id="profileMobile"></td>
+
+                        </tr>
+                    </table>
+                    <img class="mt-2 mx-auto" id="barcodeImage" src="/assets/images/Images3/barcode1.jpeg" class="mx-auto" style="height:60px; width:200px" alt="">
+              
+            </div>
+            <button class="btn btn-primary mt-2 " style="border-radius:20px;    margin-left: 36%;" id="printButton">Print Card</button>
+          
+
+        </div>
+    </div>
+   
+    
+
+   
+    <!--================== POP UP Code For Add Employee ======================-->
+    <!--================== POP UP Code For Add Employee ======================-->
+    <div class="col-lg-4 col-md-6">
+        <div class="mt-3">
+            <!-- Modal -->
+            <div class="modal bg-transparent" id="basicModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <form asp-action="AddEmp" asp-controller="Admin" method="post" enctype="multipart/form-data">
+
+                            <div class="modal-header bg-primary ">
+                                <h5 class="modal-title text-white">Add Employee</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Validation Summary -->
+                               @* // <div asp-validation-summary="All" class="text-danger"></div> *@
+
+                                <div class="container">
+                                    <div class="row">
+                                        <!-- Full Name -->
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label asp-for="Name">Full Name</label>
+                                            <input type="text" name="Name" class="form-control" asp-for="Name" id="fullNameInput" required>
+                                            <span asp-validation-for="Name" class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Address -->
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="Address" asp-for="Address">Address</label>
+                                            <input asp-for="Address" type="text" name="Address" class="form-control" required>
+                                            <span asp-validation-for="Address" class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Mobile No -->
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="MobileNo" asp-for="MobileNo">Mobile No</label>
+                                            <input asp-for="MobileNo" type="text" name="MobileNo" class="form-control" required>
+                                            <span asp-validation-for="MobileNo" class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Employee Type -->
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label asp-for="EmpType" for="EmpType">Employee Type</label>
+                                            <select asp-for="EmpType" class="form-control" id="dropdown1" required>
+                                                <option selected>Select Employee Type</option>
+                                                <option>Pay on work</option>
+                                                <option>Permanent</option>
+                                            </select>
+                                            <span asp-validation-for="EmpType" class="text-danger"></span>
+                                        </div>
+                                      
+                                        <!-- Salary -->
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="SalaryEmp" asp-for="SalaryEmp">Salary</label>
+                                            <input asp-for="SalaryEmp" name="SalaryEmp" class="form-control" required id="salaryInput" value="0" disabled>
+
+                                            <span asp-validation-for="SalaryEmp" class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Department -->
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label asp-for="DeptFk" for="DeptFk">Department</label>
+                                            <select asp-for="DeptFk" name="DeptFk" id="DeptFk" class="form-control">
+                                                <option selected disabled>Select Department</option>
+                                            </select>
+                                            <span asp-validation-for="DeptFk" class="text-danger"></span>
+                                        </div>
+
+                                        <!-- PF No -->
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label asp-for="PfNo" for="PfNo">PF No.</label>
+                                            <input asp-for="PfNo" type="text" name="PfNo" class="form-control" required>
+                                            <span asp-validation-for="PfNo" class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Account Number -->
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label asp-for="AccountNo" for="AccountNo">Account Number</label>
+                                            <input asp-for="AccountNo" type="text" name="AccountNo" class="form-control" required>
+                                            <span asp-validation-for="AccountNo" class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Profile Picture -->
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label asp-for="ImgFile" for="ImgFile">Profile Picture</label>
+                                            <input asp-for="ImgFile" class="form-control bg-primary text-white" required>
+                                            <span asp-validation-for="ImgFile" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-group col-12 col-md-6 col-lg-6">
+                                            <button type="submit" class="btn btn-primary" style="margin-top:6%; width:10rem;border-radius:20px">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- *************************************************-->
+
+ <!--==================  POP UP  Code For Update employee ======================-->
+
+    <div class="col-lg-4 col-md-6">
+        <div class="mt-3">
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                        <div class="modal-header bg-primary ">
+                            <h5 class="modal-title text-white">Update Employee</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                    <!-- Add your form fields and input elements here for editing -->
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                        <label for="empId">ID</label>
+                        <input type="text" class="form-control" id="empId" name="empId" readonly >
+                    </div>
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                        <label for="FName">Full Name</label>
+                        <input type="text" class="form-control" id="FName" name="FName" >
+                    </div>
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                        <label for="Ad">Address</label>
+                        <input type="text" class="form-control" id="Ad" name="Ad" >
+                    </div>
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                        <label for="mb">Mobile No</label>
+                        <input type="text" class="form-control" id="mb" name="mb">
+                    </div>
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                        <label for="PF">PF NO</label>
+                        <input type="text" class="form-control" id="PF" name="PF" >
+                    </div>
+
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                                        <label for="EmpT">Employee Type</label>
+                                        <select for="EmpT" class="form-control" id="EmpT" required>
+                            <option selected>Select Employee Type</option>
+                            <option>Pay on work</option>
+                            <option>Permanent</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                        <label for="sal">Salary</label>
+                        <input type="text" class="form-control" id="sal" name="sal">
+                    </div>
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                        <label for="DeptFkk">Department</label>
+                        <select name="DeptFkk" id="DeptFkk" class="form-control">
+                            <option selected disabled>Select Department</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                        <label for="ACN">Account NO</label>
+                        <input type="text" class="form-control" id="ACN" name="ACN" >
+                    </div>
+                    <div class="form-group col-6 col-md-6 col-lg-6">
+                        <label for="PImg">Profile Pic</label>
+                        <input type="file" class="form-control" id="PImg" name="PImg" >
+                    </div>
+              
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save Changes</button>
+                    </div>
+                    
+                    </div>
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+  @*   <div class="col-lg-4 col-md-6">
+        <div class="mt-3">
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary ">
+                            <h5 class="modal-title text-white">Update Employee</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <!-- Add your form fields and input elements here for editing -->
+                                    <form asp-action="UpdateEmp" asp-controller="Admin" method="post" enctype="multipart/form-data">
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="empId">ID</label>
+                                            <input type="text" class="form-control" id="empId" name="empId" readonly>
+                                        </div>
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="FName">Full Name</label>
+                                            <input type="text" class="form-control" id="FName" name="FName">
+                                        </div>
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="Ad">Address</label>
+                                            <input type="text" class="form-control" id="Ad" name="Ad">
+                                        </div>
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="PF">PF NO</label>
+                                            <input type="text" class="form-control" id="PF" name="PF">
+                                        </div>
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="EmpT">Employee Type</label>
+                                            <select for="EmpT" class="form-control" id="EmpT" required>
+                                                <option selected>Select Employee Type</option>
+                                                <option>pay on work</option>
+                                                <option>Permnant</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="DeptFkk">Department</label>
+                                            <select name="DeptFkk" id="DeptFkk" class="form-control">
+                                                <option selected disabled>Select Department</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="ACN">Account NO</label>
+                                            <input type="text" class="form-control" id="ACN" name="ACN">
+                                        </div>
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="PImg">Profile Pic</label>
+                                            <input type="file"  class="form-control" id="PImg" name="PImg">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ *@
+    
+            <!-- *************************************************-->
+
+
+@* ****************************** Delete Alert ******************************** *@
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header mx-auto">
+                    <h5 class="modal-title text-danger " id="deleteModalLabel"><strong>कारागीर हटवा</strong>    </h5>
+                   @*  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> *@
+                </div>
+                <div class="modal-body mx-auto">
+                   कारागीर ला हटवा.
+                </div>
+                <div class="modal-footer mx-auto">
+                    <button type="button" class="btn btn-secondary" onclick="hideopenmodel();">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteEmployee()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@* ************************************************************************* *@
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+
+    <script>
+        function initializeDataTable() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                buttons: ['excel', 'print']
+            });
+        }
+
+
+        $(document).ready(function () {
+            initializeDataTable();
+        });
+    </script>
+
+
+   
+    <script>
+        $(document).ready(function () {
+            $('#dropdown1').change(function () {
+                if ($(this).val() === 'Pay on work') {
+                    $('#salaryInput').prop('disabled', true);
+                    $('#salaryInput').val(0); // Set the value to 0 when Pay on work is selected
+                } else {
+                    $('#salaryInput').prop('disabled', false);
+                }
+            });
+        });
+    </script>
+
+  
+
+
+<!-- Your HTML code for the update employee form -->
+
+
+
+    <script>
+        function pagerefresh() {
+            $.ajax({
+                url: window.location.href,
+                type: 'GET',
+                success: function (response) {
+                    // Reload the page
+                    location.reload();
+                },
+                error: function (error) {
+                    console.error("Error refreshing the page:", error);
+                }
+            });
+        }
+    </script>
+
+
+    <script>
+
+
+
+        function openEditModal(Id, Name, DeptFk, AccountNo, PfNo, EmpType, Address, MobileNo, SalaryEmp) {
+            // Populate the modal fields with the row data
+            $('#empId').val(Id);
+            $('#FName').val(Name);
+
+            $('#DeptFkk').html('<option value="' + DeptFk + '">' + DeptFk + '</option>');
+            $('#ACN').val(AccountNo);
+            $('#PF').val(PfNo);
+            $('#EmpT').val(EmpType);
+           
+
+            $('#Ad').val(Address);
+            $('#mb').val(MobileNo);
+           $('#sal').val(SalaryEmp);
+            
+
+            
+          
+            // Open the edit modal
+            $('#editModal').modal('show');
+        }
+        $('#EmpT').change(function () {
+            if ($(this).val() === 'Pay on work') {
+                // Disable the salary input and set its value to 0
+                $('#sal').prop('disabled', true).val('0');
+            } else {
+                // Enable the salary input
+                $('#sal').prop('disabled', false).val('');
+            }
+        });
+
+        var image = null;
+
+        $('#PImg').change(function () {
+            image = null;
+            readimageurl(this);
+
+            ///assets/images/Images3/UserImg.png"
+
+            $('#profileImage').attr('src', '/assets/images/Images3/UserImg.png');
+
+        });
+
+        function readimageurl(input){
+            image = input.files[0];
+        }
+
+        function saveChanges() {
+            $('#profileImage').attr('src', '/assets/images/Images3/UserImg.png');
+            // Create a FormData object
+            var formData = new FormData();
+
+            // Get the form values
+            var ID = $('#empId').val().trim();
+            var Name = $('#FName').val().trim();
+            var DeptFk = $('#DeptFkk').val().trim();
+            var Account = $('#ACN').val().trim();
+            var PfNo = $('#PF').val().trim();
+            var EmpType = $('#EmpT').val().trim();
+            var Address = $('#Ad').val().trim();
+            var mob = $('#mb').val().trim();
+            var salE=$('#sal').val().trim();
+            var ProfileImg = $('#PImg').prop('files')[0]; // Get the file input value
+
+            // Append the form values to FormData
+            formData.append('Id', ID);
+            formData.append('Name', Name);
+            formData.append('DeptFk', DeptFk);
+            formData.append('AccountNo', Account);
+            formData.append('PfNo', PfNo);
+            formData.append('EmpType', EmpType);
+            formData.append('Address', Address);
+            formData.append('mobile', mob);
+            formData.append('Salary', salE);
+            formData.append('ProfileImg', image);
+
+            console.log(formData);
+
+            // Send AJAX request
+            $.ajax({
+                url: '/Admin/UpdateEmp',
+                type: 'POST',
+                data: formData,
+                processData: false, // Prevent jQuery from processing the data
+                contentType: false, // Prevent jQuery from setting contentType
+                success: function (response) {
+                    console.log(response);
+
+                    // Close the modal
+                    $('#editModal').modal('hide');
+                    alert("Record Updated successfully.");
+                    // window.location.href = '/Admin/EmployeeManagement';
+                    window.location.reload();
+
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    // Optionally, display an error message to the user
+                    alert("An error occurred while updating the record.");
+                }
+            });
+        }
+
+
+    </script>
+
+   @*  <script>
+        function printDetails(id) {
+            alert("Printing");
+            var section = document.getElementById("printSection").innerHTML;
+            // alert(section);
+            var originalBody = document.body.innerHTML;
+
+            document.body.innerHTML = section;
+
+            window.print();
+
+            // Restore the original body content
+           
+            document.body.innerHTML = originalBody;
+            location.reload();
+        }
+    </script> *@
+
+   <script>
+        const printBtn = document.getElementById('printButton');
+       printBtn.addEventListener('click', function () {
+           print();
+       })
+   </script>
+
+
+   @*  <script>
+        function printDetails(id) {
+           
+            var section = document.getElementById("printSection").innerHTML;
+            var originalBody = document.body.innerHTML;
+
+            // Apply specific styles for printing
+            var style = "<style>";
+            // style += "@@media print {";
+            // // Adjust size as needed
+            // style += "#printSection { width: 100px; height:100px; }";
+            // style += "}";
+            // style += "</style>";
+            style += "@@media print {";
+            style+="@@page{"
+            style += "size:800px 900px;";
+            style += "}";
+            style += "}";
+            style += "</style>";
+
+            // Append styles to the section
+            section += style;
+
+            document.body.innerHTML = section;
+
+            window.print();
+
+            // Restore the original body content
+            document.body.innerHTML = originalBody;
+            location.reload();
+        }
+    </script> *@
+
+   
+
+
+
+
+
+ <script>
+        // Function to open the delete modal
+        function openDeleteModal(Id) {
+
+            $('#deleteModal').modal('show');
+         
+            $('#deleteModal .btn-danger').attr('data-employee-id', Id);
+        }
+
+        // Function to delete employee
+        function deleteEmployee() {
+            var employeeId = $('#deleteModal .btn-danger').data('employee-id');
+            $.ajax({
+                url: '/Admin/DeleteEmp', // Change to your actual controller and action name
+                type: 'POST',
+                data: { Id: employeeId },
+                success: function (response) {
+                    window.location.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+          
+            
+            });
+        }
+
+
+        function hideopenmodel(){
+            $('#deleteModal').modal('hide');
+        }
+ </script>
+
+
+
+
+      <script>
+        // Get the current date
+        var currentDate = new Date();
+
+        // Format the date
+        var dateString = currentDate.toLocaleDateString("en-US",
+        {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Display the formatted date
+        document.getElementById("date").innerHTML = dateString;
+    </script>
+    
+    <script>
+        //ajax for select list to fetch data from database
+            $(document).ready(function ()
+            {
+                $('#DeptFk').on('mousedown', function () {
+                    $.ajax({
+                        url: '@Url.Action("DList", "Admin")',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var dropdown = $('#DeptFk');
+                            dropdown.empty();
+                            dropdown.append('<option selected disabled>Select Department</option>');
+                            $.each(data, function () {
+                                dropdown.append($('<option></option>').attr('value', this.id).text(this.deptName));
+                            });
+                        }
+                    });
+                });
+            });
+   
+
+    </script>
+
+    <script>
+       // ajax for select list to fetch data from database
+        $(document).ready(function () {
+            $('#DeptFkk').on('mousedown', function () {
+                $.ajax({
+                    url: '@Url.Action("DList", "Admin")',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var dropdown = $('#DeptFkk');
+                        dropdown.empty();
+                        dropdown.append('<option selected disabled>Select Department</option>');
+                        $.each(data, function () {
+                            dropdown.append($('<option></option>').attr('value', this.id).text(this.deptName));
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+ 
+    <script>
+        $(document).ready(function () {
+            var selectedId = null;
+
+            $('#employeeTableBody').on('click', 'tr', function () {
+                // Capture the ID of the clicked row
+                selectedId = $(this).find('td:eq(2)').text(); // Assuming the ID is in the third column
+                showDetails(selectedId)
+            });
+
+            // $('#printButton').on('click', function () {
+            //     if (selectedId) {
+            //         printDetails(selectedId);
+            //     } else {
+            //         alert('Dummy I card not printing ');
+            //     }
+            // });
+
+
+
+            function showDetails(id) {
+                $.ajax({
+                    url: '/Admin/SerchProfileN',
+                    type: "GET",
+                    data: { id: id },
+                    dataType: "json",
+                  
+                    success: function (result) {
+                        console.log(result);
+                    
+                        $('#profileName').html( result.name);
+                        $('#profileDept').html(  result.deptFk);
+                        $('#profileAddress').html(result.address);
+                        $('#profileImage').attr('src', '/ProfileImg/' + result.profileImg);
+                        $('#profileMobile').html(result.mobileNo);
+                        var timestamp = new Date().getTime();
+
+                        // Reload the image by appending timestamp as a query parameter
+                        $('#barcodeImage').attr('src', result.barcodeUrl + '?timestamp=' + timestamp);
+                      
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert("An error occurred while fetching data. Please try again later.");
+                    }
+                });
+            }
+
+            function printDetails1(id) {
+                // var url = '/Admin/PrintIcard?id=' + id; // Construct the URL with the selected ID
+                // var newWindow = window.open(url, '_blank');
+                // setTimeout(function () {
+                //     newWindow.print();    
+                // }, 1000);
+                alert("Printing");
+                $("#printSection").print();
+                var a = doucument.getElementById("#printSection").innerHTML;
+                alert(a);
+                
+            }
+
+        });
+    </script>
+   
+
+
+
+
+  
+
+    <script>
+        function filterTable12(Emptype) {
+            $.ajax({
+                url: '/Admin/GetEmployeesByEmpTpe', // Adjust the URL to match your controller and action
+                type: "GET",
+                data: { type: Emptype },
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+
+                    $('#employeeTableBody').empty(); // Clear existing table rows
+                    var serialNo = 1;
+                    result.employees.forEach(function (emp) {
+                        var row = '<tr>' +
+                            '<td>' + serialNo + '</td>' +
+                            '<td><a class="profile-link" onclick="showDetails(\'' + emp.name + '\')">' + emp.name + '</a></td>' +
+                            '<td>' + emp.id + '</td>' +
+                            '<td>' + emp.deptFk + '</td>' +
+                            '<td>' + emp.empType + '</td>' +
+                            '<td>' +
+                            '<button class="btn btn-primary btn-sm" style=" width:60px" onclick="openEditModal(\'' + emp.id + '\',\'' + emp.name + '\',\'' + emp.deptFk + '\',\'' + emp.accountNo + '\',\'' + emp.pfNo + '\',\'' + emp.empType + '\',\'' + emp.address + '\',\'' + emp.mobileNo + '\',\'' + emp.salaryEmp + '\', )">Edit</button>' +
+                            '</td>' +
+                            '<td>' +
+                            '<button class="btn btn-danger btn-sm" onclick="deleteEmployee(\'' + emp.id + '\')">Delete</button>' +
+                            '</td>' +
+                            '</tr>';
+                        $('#employeeTableBody').append(row);
+                        serialNo++;
+                    });
+                },
+
+                error: function (xhr, status, error) {
+                    console.error("Status:", status);
+                    console.error("Error:", error);
+                    console.error(xhr.responseText);
+                    alert("An error occurred while fetching data. Please try again later.");
+                }
+            });
+        }
+    </script>
+
+
+    
+    <script>
+        function filterTable(department) {
+            $.ajax({
+                url: '/Admin/GetEmployeesByDepartment', // Adjust the URL to match your controller and action
+                type: "GET",
+                data: { department: department },
+                dataType: "json",
+                success: function (result) 
+                {
+                    console.log(result);
+                   
+                    $('#employeeTableBody').empty(); // Clear existing table rows
+                    var serialNo = 1;
+                    result.employees.forEach(function (emp) {
+                        var row = '<tr>' +
+                            '<td>' + serialNo + '</td>' +
+                            '<td><a class="profile-link" onclick="showDetails(\'' + emp.name + '\')">' + emp.name + '</a></td>' +
+                            '<td>' + emp.id + '</td>' +
+                            '<td>' + emp.deptFk + '</td>' +
+                            '<td>' + emp.empType + '</td>' +
+                            '<td>' +
+                            '<button class="btn btn-primary btn-sm"  style=" width:60px" onclick="openEditModal(\'' + emp.id + '\',\'' + emp.name + '\',\'' + emp.deptFk + '\',\'' + emp.accountNo + '\',\'' + emp.pfNo + '\',\'' + emp.empType + '\',\'' + emp.address + '\',\'' + emp.mobileNo + '\',\'' + emp.salaryEmp + '\', )">Edit</button>' +
+                            '</td>' +
+                            '<td>' +
+                            '<button class="btn btn-danger btn-sm" onclick="deleteEmployee(\'' + emp.id + '\')">Delete</button>' +
+                            '</td>' +
+                            '</tr>';
+                        $('#employeeTableBody').append(row);
+                        serialNo++;
+                    });
+                },
+
+                error: function (xhr, status, error) {
+                    console.error("Status:", status);
+                    console.error("Error:", error);
+                    console.error(xhr.responseText);
+                    alert("An error occurred while fetching data. Please try again later.");
+                }
+            });
+        }
+
+    </script>
+
+
+   
+
+
+
+   
+ <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</body>
+

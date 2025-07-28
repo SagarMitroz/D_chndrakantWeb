@@ -1,0 +1,171 @@
+2025-07-04 10:31:53: --------------------------------------------------------------------------------------------
+2025-07-04 10:31:53: gettrasaction accessed.
+2025-07-04 10:31:53: gettrasaction employeid: 1
+2025-07-04 10:31:55: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 10:31:55: Employee Name: vijayC
+2025-07-04 10:32:15: --------------------------------------------------------------------------------------------
+2025-07-04 10:32:15: gettrasaction accessed.
+2025-07-04 10:32:15: gettrasaction employeid: 1
+2025-07-04 10:32:15: Employee Name: vijayC
+2025-07-04 10:32:20: --------------------------------------------------------------------------------------------
+2025-07-04 10:32:20: gettrasaction accessed.
+2025-07-04 10:32:20: gettrasaction employeid: 1
+2025-07-04 10:32:21: Employee Name: vijayC
+2025-07-04 10:33:03: --------------------------------------------------------------------------------------------
+2025-07-04 10:33:03: gettrasaction accessed.
+2025-07-04 10:33:03: gettrasaction employeid: 2
+2025-07-04 10:33:06: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 10:33:06: Employee Name: VijayS
+2025-07-04 10:33:16: --------------------------------------------------------------------------------------------
+2025-07-04 10:33:16: gettrasaction accessed.
+2025-07-04 10:33:16: gettrasaction employeid: 2
+2025-07-04 10:33:17: Employee Name: VijayS
+2025-07-04 10:34:13: --------------------------------------------------------------------------------------------
+2025-07-04 10:34:13: gettrasaction accessed.
+2025-07-04 10:34:13: gettrasaction employeid: 2
+2025-07-04 10:34:13: Employee Name: VijayS
+2025-07-04 11:00:44: --------------------------------------------------------------------------------------------
+2025-07-04 11:00:44: gettrasaction accessed.
+2025-07-04 11:00:44: gettrasaction employeid: 1
+2025-07-04 11:00:46: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 11:00:46: Employee Name: vijayC
+2025-07-04 11:01:04: gettrasaction (JSON) accessed.
+2025-07-04 11:03:17: gettrasaction (JSON) accessed.
+2025-07-04 11:04:04: gettrasaction (JSON) accessed.
+2025-07-04 11:06:38: gettrasaction (JSON) accessed.
+2025-07-04 11:07:08: gettrasaction (JSON) accessed.
+2025-07-04 11:07:20: gettrasaction (JSON) accessed.
+2025-07-04 11:09:17: gettrasaction (JSON) accessed.
+2025-07-04 11:09:29: gettrasaction (JSON) accessed.
+2025-07-04 11:10:14: gettrasaction (JSON) accessed.
+2025-07-04 11:12:03: gettrasaction (JSON) accessed.
+2025-07-04 11:13:28: gettrasaction (JSON) accessed.
+2025-07-04 11:13:49: gettrasaction (JSON) accessed.
+2025-07-04 11:26:21: gettrasaction (JSON) accessed.
+2025-07-04 11:26:55: gettrasaction (JSON) accessed.
+2025-07-04 11:27:17: gettrasaction (JSON) accessed.
+2025-07-04 11:27:18: gettrasaction (JSON) accessed.
+2025-07-04 11:32:03: gettrasaction (JSON) accessed.
+2025-07-04 11:33:42: gettrasaction (JSON) accessed.
+2025-07-04 11:34:12: saveedietddata  accessed.
+2025-07-04 11:34:12: saveedietddata  accessed.
+2025-07-04 11:34:12: saveedietddata 04/07/2025 11:34:12 am .
+2025-07-04 11:34:12: saveedietddata 04/07/2025 11:34:12 am .
+2025-07-04 11:34:12: saveedietddata D_Chandrakant.DataModels.Emp .
+2025-07-04 11:34:12: saveedietddata True .
+2025-07-04 11:34:12: saveedietddata System.String[] .
+2025-07-04 11:34:12: saveedietddata 04/07/2025 11:34:12 am .
+2025-07-04 11:34:12: saveedietddata 07/04/2025 11:34:12 .
+2025-07-04 11:34:12: saveedietddata givenDate1 04/07/2025 11:34:12 am .
+2025-07-04 11:34:12: saveedietddata monthStartDate 01/07/2025 12:00:00 am .
+2025-07-04 11:34:12: saveedietddata monthEndDate 31/07/2025 12:00:00 am .
+2025-07-04 11:34:12: saveedietddata privmonthStartDate 01/06/2025 12:00:00 am .
+2025-07-04 11:34:12: saveedietddata privmonthEndDate 30/06/2025 12:00:00 am .
+2025-07-04 11:34:12: saveedietddata startdateTime 01/07/2025 12:00:00 am .
+2025-07-04 11:34:12: saveedietddata enddateTime 31/07/2025 12:00:00 am .
+2025-07-04 11:34:12: saveedietddata ispermanent True .
+2025-07-04 11:34:19: gettrasaction (JSON) accessed.
+2025-07-04 11:34:35: gettrasaction (JSON) accessed.
+2025-07-04 11:38:49: --------------------------------------------------------------------------------------------
+2025-07-04 11:38:49: gettrasaction accessed.
+2025-07-04 11:38:49: gettrasaction employeid: 15
+2025-07-04 11:38:49: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 11:38:49: Employee Name: Sagar shimpi
+2025-07-04 11:38:52: gettrasaction (JSON) accessed.
+2025-07-04 11:39:11: gettrasaction (JSON) accessed.
+2025-07-04 11:39:28: --------------------------------------------------------------------------------------------
+2025-07-04 11:39:28: gettrasaction accessed.
+2025-07-04 11:39:28: gettrasaction employeid: 16
+2025-07-04 11:39:28: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 11:39:28: Employee Name: sanket
+2025-07-04 11:39:34: gettrasaction (JSON) accessed.
+2025-07-04 11:39:42: gettrasaction (JSON) accessed.
+2025-07-04 11:39:49: --------------------------------------------------------------------------------------------
+2025-07-04 11:39:49: gettrasaction accessed.
+2025-07-04 11:39:49: gettrasaction employeid: 2
+2025-07-04 11:39:49: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 11:39:49: Employee Name: VijayS
+2025-07-04 11:39:50: gettrasaction (JSON) accessed.
+2025-07-04 11:40:02: gettrasaction (JSON) accessed.
+2025-07-04 12:28:01: --------------------------------------------------------------------------------------------
+2025-07-04 12:28:01: gettrasaction accessed.
+2025-07-04 12:28:02: gettrasaction employeid: 1
+2025-07-04 12:28:02: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 12:28:02: Employee Name: vijayC
+2025-07-04 12:28:02: gettrasaction (JSON) accessed.
+2025-07-04 12:28:09: --------------------------------------------------------------------------------------------
+2025-07-04 12:28:09: gettrasaction accessed.
+2025-07-04 12:28:09: gettrasaction employeid: 2
+2025-07-04 12:28:09: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 12:28:09: Employee Name: VijayS
+2025-07-04 12:28:10: gettrasaction (JSON) accessed.
+2025-07-04 12:28:21: --------------------------------------------------------------------------------------------
+2025-07-04 12:28:21: gettrasaction accessed.
+2025-07-04 12:28:21: gettrasaction employeid: 15
+2025-07-04 12:28:21: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 12:28:21: Employee Name: Sagar shimpi
+2025-07-04 12:28:21: gettrasaction (JSON) accessed.
+2025-07-04 16:34:06: --------------------------------------------------------------------------------------------
+2025-07-04 16:34:06: --------------------------------------------------------------------------------------------
+2025-07-04 16:34:06: gettrasaction accessed.
+2025-07-04 16:34:06: gettrasaction accessed.
+2025-07-04 16:34:06: gettrasaction employeid: 2
+2025-07-04 16:34:06: gettrasaction employeid: 1
+2025-07-04 16:34:06: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 16:34:06: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 16:34:07: Employee Name: vijayC
+2025-07-04 16:34:07: Employee Name: VijayS
+2025-07-04 16:34:07: gettrasaction (JSON) accessed.
+2025-07-04 16:34:22: --------------------------------------------------------------------------------------------
+2025-07-04 16:34:22: gettrasaction accessed.
+2025-07-04 16:34:22: gettrasaction employeid: 1
+2025-07-04 16:34:22: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 16:34:22: Employee Name: vijayC
+2025-07-04 16:34:22: gettrasaction (JSON) accessed.
+2025-07-04 16:34:32: gettrasaction (JSON) accessed.
+2025-07-04 18:41:42: --------------------------------------------------------------------------------------------
+2025-07-04 18:41:42: gettrasaction accessed.
+2025-07-04 18:41:42: gettrasaction employeid: 1
+2025-07-04 18:41:42: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 18:41:42: Employee Name: vijayC
+2025-07-04 18:41:43: gettrasaction (JSON) accessed.
+2025-07-04 18:44:08: saveedietddata  accessed.
+2025-07-04 18:44:08: saveedietddata  accessed.
+2025-07-04 18:44:08: saveedietddata 04/07/2025 6:44:08 pm .
+2025-07-04 18:44:08: saveedietddata 04/07/2025 6:44:08 pm .
+2025-07-04 18:44:08: saveedietddata D_Chandrakant.DataModels.Emp .
+2025-07-04 18:44:08: saveedietddata False .
+2025-07-04 18:44:08: saveedietddata System.String[] .
+2025-07-04 18:44:08: saveedietddata 04/07/2025 6:44:08 pm .
+2025-07-04 18:44:08: saveedietddata 07/04/2025 18:44:08 .
+2025-07-04 18:44:08: saveedietddata givenDate1 04/07/2025 6:44:08 pm .
+2025-07-04 18:44:08: saveedietddata monthStartDate 01/07/2025 12:00:00 am .
+2025-07-04 18:44:08: saveedietddata monthEndDate 31/07/2025 12:00:00 am .
+2025-07-04 18:44:08: saveedietddata privmonthStartDate 01/06/2025 12:00:00 am .
+2025-07-04 18:44:08: saveedietddata privmonthEndDate 30/06/2025 12:00:00 am .
+2025-07-04 18:44:08: saveedietddata startdateTime 01/07/2025 12:00:00 am .
+2025-07-04 18:44:08: saveedietddata enddateTime 31/07/2025 12:00:00 am .
+2025-07-04 18:44:08: saveedietddata record System.Collections.Generic.List`1[D_Chandrakant.DataModels.Empwork] .
+2025-07-04 18:56:02: saveedietddata  accessed.
+2025-07-04 18:56:02: saveedietddata  accessed.
+2025-07-04 18:56:02: saveedietddata 04/07/2025 6:56:02 pm .
+2025-07-04 18:56:02: saveedietddata 04/07/2025 6:56:02 pm .
+2025-07-04 18:56:02: saveedietddata D_Chandrakant.DataModels.Emp .
+2025-07-04 18:56:02: saveedietddata True .
+2025-07-04 18:56:02: saveedietddata System.String[] .
+2025-07-04 18:56:02: saveedietddata 04/07/2025 6:56:02 pm .
+2025-07-04 18:56:02: saveedietddata 07/04/2025 18:56:02 .
+2025-07-04 18:56:02: saveedietddata givenDate1 04/07/2025 6:56:02 pm .
+2025-07-04 18:56:02: saveedietddata monthStartDate 01/07/2025 12:00:00 am .
+2025-07-04 18:56:02: saveedietddata monthEndDate 31/07/2025 12:00:00 am .
+2025-07-04 18:56:02: saveedietddata privmonthStartDate 01/06/2025 12:00:00 am .
+2025-07-04 18:56:02: saveedietddata privmonthEndDate 30/06/2025 12:00:00 am .
+2025-07-04 18:56:02: saveedietddata startdateTime 01/07/2025 12:00:00 am .
+2025-07-04 18:56:02: saveedietddata enddateTime 31/07/2025 12:00:00 am .
+2025-07-04 18:56:02: saveedietddata ispermanent True .
+2025-07-04 18:56:14: --------------------------------------------------------------------------------------------
+2025-07-04 18:56:14: gettrasaction accessed.
+2025-07-04 18:56:14: gettrasaction employeid: 15
+2025-07-04 18:56:14: Dates reset to current month: fromDate=01/07/2025 12:00:00 am, toDate=31/07/2025 12:00:00 am
+2025-07-04 18:56:15: Employee Name: Sagar shimpi
+2025-07-04 18:56:15: gettrasaction (JSON) accessed.

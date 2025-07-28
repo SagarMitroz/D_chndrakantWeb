@@ -1,0 +1,769 @@
+﻿@model D_Chandrakant.Models.EmpSalaryViewMode
+@{
+    Layout = "_Layout";
+    var sr = 1;
+}
+<style>
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: clamp(0.5rem, 1vw, 0.75rem);
+        align-items: flex-end;
+        margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+    }
+
+    .ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 1000 !important;
+    font-size: 14px;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.ui-autocomplete li {
+    list-style-type: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    white-space: nowrap;     /* Force one line */
+    overflow-x: auto;        /* Allow horizontal scroll if text is too long */
+    max-width: 400px;        /* Set width limit */
+}
+
+/* Hover effect fix: white text on blue background */
+.ui-autocomplete li:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* jQuery UI selected item style */
+.ui-state-active {
+    background-color: #007bff !important;
+    color: #fff !important;
+}
+
+/* Hide screen-reader accessible helper */
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+/* Optional: visible scrollbar on long names */
+.ui-autocomplete li::-webkit-scrollbar {
+    height: 4px;
+}
+.ui-autocomplete li::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+</style>
+
+
+
+<head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D.Chandrakant Tailors </title>
+    <link rel="shortcut icon" type="image/png" class="bg-black" href="../assets/images/logos/Favicon.png" />
+   
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" class="bg-black" href="../assets/images/logos/Favicon.png" />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @* <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+</head>
+
+<body class="bg-light-primary">
+
+
+    <section class="Emp-management mb-4">
+        <header class="container-fluid">
+            <div class="col-6 mt-3">
+                    <h2 class="ml-2">Employee Salary Management</h2>
+                </div>
+
+
+            <div class="col-2" style="    margin-left: 85%;">
+                    <a class=" btn border-primary rounded-pill bg-primary text-white  " data-bs-toggle="modal" data-bs-target="#basicModal" style="margin-top: -22px;">
+                        Advance Salary
+                    </a>
+                </div>
+            <div class="col-3">
+                
+            </div>
+           
+
+            <form id="monthlyReportForm" method="get" asp-action="" class="form-row">
+                <div class="form-group" style="display:none;">
+                    <label for="fromDate" >Select Date</label>
+                    <div class="" id="reportrange" style=";background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; ">
+                        <i class="bi bi-calendar3"></i>&nbsp;
+                        <span id="dggf"></span> <i class="fa fa-caret-down"></i>
+                    </div>
+                    <input type="hidden" id="fromDate" name="fromDate" />
+                    <input type="hidden" id="toDate" name="toDate" />
+                </div>
+                <div class="form-group flex flex-col space-y-1" style="display: flex
+;
+    flex-wrap: nowrap;
+    flex-direction: column;">
+                    <label for="supplier" class="text-sm font-medium text-gray-700">Select Employee</label>
+                    <input id="supplier"
+                           name="supplier"
+                           type="text"
+                           class="w-full text-sm border border-slate-300 shadow-sm rounded-md px-2 py-1" />
+                    <input type="hidden" id="supplierId" name="supplierId" />
+                </div>
+               
+                <div class="form-group" style="display:none">
+                    <label for="fromDate">From Date:</label>
+                    <input type="date" id="fromDate" name="fromDate" class="form-control">
+                </div>
+                <div class="form-group" style="display:none">
+                    <label for="toDate">To Date:</label>
+                    <input type="date" id="toDate" name="toDate" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="employeid">Select Department:</label>
+                    <select id="employeid" name="employeid" class="form-control">
+                        <option value="1">Cutting</option>
+                        <option value="2">Stitching</option>
+                        <option value="3">Ironing</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </form>
+
+
+               
+
+
+           
+
+            <div class="row ">
+
+                <div class="col-6 mt-3">
+                </div>
+            </div>
+            
+        </header>
+       
+    </section>
+
+
+    @*<section class="Emp-management mb-4">
+        <header class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <h2 class="ml-2">Employee Salary Management</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mt-2 mb-2">
+                        <form id="monthlyReportForm">
+                            <div class="form-group">
+                                <label for="startDate">Start Date:</label>
+                                <input type="date" id="startDate" name="startDate" class="form-control">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-3 mt-2 mb-2">
+                        <div class="form-group">
+                            <label for="endDate">End Date:</label>
+                            <input type="date" id="endDate" name="endDate" class="form-control">
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="col-6 mt-3">
+                        <div class="sec-div mr-2" style="display: flex; justify-content: flex-End;">
+                            <a class=" btn border-primary rounded-pill bg-primary text-white  " data-bs-toggle="modal" data-bs-target="#basicModal" style="width: 200px;">
+                                Advance Salary
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            </div>
+        </header>
+        </div>
+        </div>
+    </section>*@
+
+    <section class="section-table">
+        <section class="container-fluid">
+            <div class="row">
+                <div class="col d-flex ">
+                    <div class="card w-100">
+                        <div class=" ">
+                            <div class="table-responsive">
+                                <table class="table text-nowrap mb-0 align-middle table-hover" id="example" style="text-align:center;">
+                                    <thead class="text-dark fs-4 bg-light">
+                                        <tr  style="background-color: #E1E2FF;">
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Sr.No</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Employee Name</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Department</h6>
+                                         </th> 
+                                         <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Emp. Type</h6>
+                                         </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold text-dark mb-0">Pending Amount</h6>
+                                            </th>
+                                            <th class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0">Actions</h6>
+                                            </th>
+
+                                          
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+        </section>
+    </section>
+
+
+
+
+
+    <!-- *************************************************-->
+    <!-- *************  Add New PayRoll*-->
+    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- AJAX Form -->
+                <form id="advanceForm">
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white">Advance Payment</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+
+                                
+                                    <div class="form-group col-6 col-md-6 col-lg-6">
+                                        <label  for="Empolyeefk">Employee Name</label>
+                                        <select  name="EmpIdFk" id="Empolyeefk" class="form-control">
+                                            <option selected disabled>Enter Employee Name</option>
+                                        </select>
+                                    </div>
+                                
+
+                                <div class="form-group col-6">
+                                    <label for="AdvanceSalary">Advance Amount</label>
+                                    <input type="number" name="AdvanceSalary" id="AdvanceSalary" class="form-control" required />
+                                </div>
+
+                                <input type="hidden" name="AdvanceSalaryDate" id="AdvanceSalaryDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+
+                                <div class="form-group col-6 mt-4">
+                                    <button type="submit" class="btn btn-primary" style="width: 10rem; border-radius: 20px;">Save</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    @* <div class="col-lg-4 col-md-6">
+        <div class="mt-3">
+            <!-- Modal -->
+            <div class="modal  bg-transparent" id="basicModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <form asp-action="EmployeeSalary" asp-controller="Admin" method="post">
+
+                            <div class="modal-header bg-primary ">
+                                <h5 class="modal-title text-white">Advance Payment</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label asp-for="EmpIdFk" for="Empolyeefk">Employee Name</label>
+                                            <select asp-for="EmpIdFk" name="EmpIdFk" id="Empolyeefk" class="form-control">
+                                                <option selected disabled>Enter Employee Name</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label asp-for="AdvanceSalary" for="AdvanceSalary">Advance Amount</label>
+                                            <input asp-for="AdvanceSalary" type="text" name="AdvanceSalary" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-6 col-md-6 col-lg-6" style="display:none">
+                                            <label asp-for="AdvanceSalaryDate" for="AdvanceSalaryDate">Adavance Amt Date</label>
+                                            <input asp-for="AdvanceSalaryDate" type="date" id="AdvanceSalaryDate" name="AdvanceSalaryDate" class="form-control" value="@DateTime.Now">
+                                        </div>
+
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+
+                                            <button type="submit" class="btn btn-primary" style="margin-top:6%; width:10rem;border-radius:20px">Save</button>
+                                        </div>
+
+
+
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> *@
+
+
+
+
+    <!-- *************************************************-->
+    <!--*-->
+
+    
+    <div class="col-lg-4 col-md-6">
+        <div class="mt-3">
+            <!-- Modal -->
+            <div class="modal  bg-transparent" id="basicModal12" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        
+                            <div class="modal-header bg-primary ">
+                                <h5 class="modal-title text-white">Advance Payment</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label  for="Empolyeefk">Employee Name</label>
+                                        <input type="text" class="form-control" id="myeddittext" name="myeddittext" />
+                                        <input type="text" class="form-control" id="myeddittextid" name="myeddittextid" style="display:none" />
+                                        </div>
+
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+                                            <label for="empId">Pay Amount</label>
+                                            <input type="text" class="form-control" name="PendingSalary1" >
+                                        </div>
+                                        <div class="form-group col-6 col-md-6 col-lg-6" style="display:none">
+                                            <label for="AdvanceSalaryDate">Adavance Amt Date</label>
+                                            <input  type="date" id="AdvanceSalaryDate1" name="AdvanceSalaryDate1" class="form-control">
+                                        </div>
+
+                                        <div class="form-group col-6 col-md-6 col-lg-6">
+
+                                        <button type="button" class="btn btn-primary" style="margin-top:6%; width:10rem;border-radius:20px" onclick="savedata()">Save</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* ******************************************************************************************************* *@
+
+
+
+    @* ******************************************************************************************************* *@
+  
+
+
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#advanceForm').submit(function (e) {
+                e.preventDefault();
+
+                var formData = {
+                    EmpIdFk: $('#Empolyeefk').val(),
+                    AdvanceSalary: $('#AdvanceSalary').val(),
+                    AdvanceSalaryDate: $('#AdvanceSalaryDate').val()
+                };
+                console.log(formData);
+
+                $.ajax({
+                    url: '/Admin/EmployeeSalaryJ',
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        alert('Advance salary saved successfully!');
+                        $('#basicModal').modal('hide');
+                        location.reload(); // Optional: refresh data on page
+                    },
+                    error: function () {
+                        alert('Failed to save salary. Please check inputs.');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <script>
+        jQuery(function () {
+            jQuery("#supplier").autocomplete({
+                source: function (request, response) {
+                    jQuery.ajax({
+                        url: "/Admin/GetSupplierbyname",
+                        dataType: "json",
+                        data: { term: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.label,
+                                    value: item.label,
+                                    id: item.id
+                                };
+                            }));
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.error('Error fetching data: ' + textStatus, errorThrown);
+                        }
+                    });
+                },
+                minLength: 2,
+                select: function (event, ui) {
+                    var Name = ui.item.label;
+                    var Id = ui.item.id;
+                    $("#Id").val(Id);
+                     $("#supplierId").val(Id);  
+                    var newid = $("#Id").val();
+                    
+                },
+                open: function (event, ui) {
+                    $(this).autocomplete("widget").position({
+                        my: "left top",
+                        at: "left bottom",
+                        of: this
+                    });
+                   $(this).autocomplete("widget").outerWidth($(this).outerWidth());
+                }
+            });
+        });
+    </script>
+
+    <script>
+
+        function initializeDataTable() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+
+                buttons: ['copy', 'csv', 'excel', 'pdf']
+            });
+        }
+
+
+     
+
+
+        $(document).ready(function () {
+
+           var start = moment();
+        var end = moment();
+
+        // 2. Update the display inside the span
+        function cb(start, end) {
+            $('#dggf').html(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+        }
+
+        // 3. Initialize daterangepicker
+        $('#reportrange').daterangepicker({
+            startDate: start,
+            endDate: end,
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        }, cb);
+
+        cb(start, end); // Set default display
+
+        // 4. Send AJAX request
+        function sendAjax(fromDate, toDate) {
+            var deptId = $('#employeid').val();
+              var employeid = $('#supplierId').val();
+
+         
+
+            $.ajax({
+                url: '/Admin/EmployeeSalaryJson',
+                type: 'Post',
+                data: {
+                    deptId: deptId,
+                    employeid: employeid,
+                   
+                },
+                success: function (response) {
+                   console.log('Success:', response);
+
+        var salaryData = response.salary; // ✅ access nested array
+        var tbody = $("#example tbody");
+
+        // Destroy DataTable if already initialized
+        if ($.fn.DataTable.isDataTable('#example')) {
+            $('#example').DataTable().clear().destroy();
+        }
+
+        tbody.empty(); // Clear existing rows
+
+        if (salaryData && salaryData.length > 0) {
+            var sr = 1;
+            salaryData.forEach(function (item) {
+                var salaryColor = item.pendingSalary != null && item.pendingSalary.toString().includes("-") ? "red" : "green";
+
+                var row = `
+                <tr>
+                    <td class="border-bottom-0">${sr}</td>
+                    <td class="border-bottom-0">${item.empName || '-'}</td>
+                    <td class="border-bottom-0">${item.departmentofemployee || '-'}</td>
+                    <td class="border-bottom-0">${item.empType || '-'}</td>
+                    <td class="border-bottom-0">
+                        <div class="d-flex align-items-center gap-2" style="justify-content: center;">
+                            <span class="badge text-dark fs-4 rounded p-2 fw-semibold" style="color:${salaryColor} !important">
+                                ${item.pendingSalary != null ? item.pendingSalary : '0'}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="border-bottom-0">
+                        <button class="btn btn-primary pay-btn"
+                            onclick="basicModal('${item.id}','${item.empName}', '${item.empType}','${item.pendingSalary}','${item.advanceSalaryDate}')">Pay</button> |
+                        <button class="btn btn-primary pay-btn"
+                            onclick="getalldatabyid('${item.id}','${item.empName}', '${item.empType}','${item.pendingSalary}','${item.advanceSalaryDate}')">View</button>
+                    </td>
+                </tr>`;
+
+                tbody.append(row);
+                sr++;
+            });
+
+            // ✅ Reinitialize DataTable after appending all rows
+            initializeDataTable();
+        } else {
+            tbody.append('<tr><td colspan="6" class="text-center">No salary records found.</td></tr>');
+        
+        }
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX Error:', error);
+                }
+            });
+        }
+
+        // 5. On form submit (filter button click)
+        $('form').submit(function (e) {
+            e.preventDefault();
+
+            var dateRange = $('#dggf').text().trim();
+            var dates = dateRange.split('-');
+
+            if (dates.length === 2) {
+                var fromDate = moment(dates[0].trim(), 'DD/MM/YYYY').format('YYYY-MM-DD');
+                var toDate = moment(dates[1].trim(), 'DD/MM/YYYY').format('YYYY-MM-DD');
+                sendAjax(fromDate, toDate);
+            }
+        });
+
+        // 6. Trigger default request on page load with today’s date
+        var today = moment().format('YYYY-MM-DD');
+        sendAjax(today, today);
+
+            $('#Empolyeefk').on('mousedown', function () {
+                $.ajax({
+                    url: '@Url.Action("GetEmplyeeList", "Admin")',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var dropdown = $('#Empolyeefk');
+                        dropdown.empty();
+                        dropdown.append('<option selected disabled>Select Employee</option>');
+                        $.each(data, function () {
+                            dropdown.append($('<option></option>').attr('value', this.id).text(this.name));
+                        });
+                    }
+                });
+            });
+
+            initializeDataTable();
+
+
+          
+        });
+
+              $('#supplier').on('blur change', function () {
+            var supplierValue = $(this).val().trim();
+            if (supplierValue === '') {
+                $('#supplierId').val(0);
+            }
+        });
+
+        function basicModal(Id, EmpName, EmpType, PendingSalary, AdvanceSalaryDate) {
+
+            document.getElementsByName("myeddittext")[0].value = "";
+            document.getElementsByName("myeddittextid")[0].value = "";
+            document.getElementsByName("PendingSalary1")[0].value = "";
+            document.getElementById("AdvanceSalaryDate1").value = "";
+          
+
+            document.getElementsByName("myeddittext")[0].value = EmpName;
+            document.getElementsByName("myeddittextid")[0].value = Id;
+            document.getElementsByName("PendingSalary1")[0].value = PendingSalary;
+            
+
+
+            // Show the modal
+            var modal = new bootstrap.Modal(document.getElementById('basicModal12'));
+            modal.show();
+            
+
+        }
+
+
+        function getalldatabyid(Id) {
+
+            
+            window.location.href = '/Admin/gettrasaction?employeid=' + Id;
+
+        }
+
+
+        function savedata() {
+            var EmpName = document.getElementsByName("myeddittext")[0].value;
+            var id = document.getElementsByName("myeddittextid")[0].value;
+            var pendingsal = document.getElementsByName("PendingSalary1")[0].value;
+            var selecteddate = document.getElementsByName("AdvanceSalaryDate1")[0].value;
+
+            $.ajax({
+                url: '/Admin/saveedietddata',
+                type: 'POST',
+                data: { EmpName: EmpName, id: id, pendingsal: pendingsal, selecteddate: selecteddate }, // Added comma here
+                dataType: 'json',
+                success: function (responce) {
+
+                    $("#basicModal12").modal("hide");
+
+                    location.reload();
+                   
+                }
+            });
+        }
+
+    </script>
+
+   
+
+
+    <script>
+        // Get the current date
+        var currentDate = new Date();
+
+        // Format the date
+        var dateString = currentDate.toLocaleDateString("en-US", {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Display the formatted date
+        document.getElementById("date").innerHTML = dateString;
+    </script>
+
+    
+
+
+
+ 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var today = new Date();
+            var day = ("0" + today.getDate()).slice(-2);
+            var month = ("0" + (today.getMonth() + 1)).slice(-2);
+            var dateString = today.getFullYear() + "-" + month + "-" + day;
+
+            document.getElementById("fromDate").value = dateString;
+            document.getElementById("toDate").value = dateString;
+        });
+    </script>
+
+  
+    <script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   
+   
+   
+</body>
+
