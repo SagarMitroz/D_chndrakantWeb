@@ -30,11 +30,9 @@
           rel="stylesheet" />
 
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.css" rel="stylesheet" />
-   
+    <script src="~/assets/ProjectCdn/Js/bootstrap5.min.js"></script>
+    <link href="~/assets/ProjectCdn/Datatable/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/assets/ProjectCdn/Datatable/buttons.dataTables.css" rel="stylesheet" />
 
     <style>
        @@media screen and (min-device-width: 768px) and (max-device-width: 1024px)
@@ -59,22 +57,28 @@
 
 
         <div class="row">
-            <nav class="navbar navbar-light " style="border-bottom:2px solid #3196E7;height:74px;background-color:#f4f7fe;">
-                <div class="container-fluid">
-                    <a asp-action="EmpPage" style="text-decoration: none; color:black;font-size: 30px;margin-bottom:1%;">&larr;</a>
-
-                    <span class="navbar-text ms-1">
-                        <h5>Welcome, @ViewBag.Username (@ViewBag.Dept)</h5>
-                    </span>
-                   
-                    <a asp-controller="AuthEmp" asp-action="EmpLogout">
-                        <img src="/assets/images/Images3/logout.png" style="height: 30px;margin-right: 10px;">
+            <nav class="navbar navbar-light" style="border-bottom: 2px solid #3196E7; height: 74px; background-color: #f4f7fe;">
+                <div class="container-fluid d-flex justify-content-between align-items-center">
+                    <!-- Back Arrow -->
+                    <a href="/Emp/EmpPage"
+                       style="text-decoration: none; color: black; font-size: 25px; display: inline-block; padding: 10px 15px;">
+                        &larr;
                     </a>
 
 
+                    <!-- Centered Welcome Message -->
+                    <div class="text-center">
+                        <h5 class="mb-0">Welcome, @ViewBag.Username (@ViewBag.Dept)</h5>
+                    </div>
+
+                    <!-- Logout Icon -->
+                    <a asp-controller="AuthEmp" asp-action="EmpLogout">
+                        <img src="/assets/images/Images3/logout.png" style="height: 30px;">
+                    </a>
                 </div>
             </nav>
         </div>
+
         <!-- First Row for Nav -->
         <!-- Second Row with Two Columns -->
         <div class="row w-100">
